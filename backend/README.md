@@ -2,19 +2,23 @@
 ```
 python version >= 3.6
 
-pipenv version >= 2020\
+pipenv
 
 ```
 
 # After run application 
 ```
-
 python -m pipenv shell
 ```
 
-# Run application
+# Installing a package
+
+```
+python -m pienv install <package_name>
 ```
 
-python manage.py runserver
+# Run application
 
+```
+python manage.py runserver
 ```

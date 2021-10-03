@@ -1,16 +1,15 @@
-import Vue from "vue";
-import App from "./App.vue";
-import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
+import { createApp } from 'vue'
+import './tailwind.css'
+import App from './App.vue'
+import { routes } from './routes.js'
+import { createRouter, createWebHistory } from 'vue-router'
 
-// Import Bootstwrap an BootstrapVue CSS files (order is important)
-import "bootstrap/dist/css/bootstrap.css";
-import "bootstrap-vue/dist/bootstrap-vue.css";
+const app = createApp(App)
 
-// Make BootstrapVue available throughout your project
-Vue.use(BootstrapVue);
-// Optionally install the BootstrapVue icon components plugin
-Vue.use(IconsPlugin);
+const router = createRouter({
+  history: createWebHistory(),
+  routes,
+})
 
-new Vue({
-  render: (h) => h(App),
-}).$mount("#app");
+app.use(router)
+app.mount('#app')
