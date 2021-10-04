@@ -31,15 +31,7 @@
         >
       </a>
       <ul class="flex items-center hidden space-x-8 lg:flex">
-        <li>
-          <a
-            href="/"
-            aria-label="Our product"
-            title="Our product"
-            class="font-medium tracking-wide text-white transition-colors duration-200 hover:text-red-50"
-            >Planes</a
-          >
-        </li>
+        
         <li>
           <a
             href="/"
@@ -55,7 +47,7 @@
             aria-label="Product pricing"
             title="Product pricing"
             class="font-medium tracking-wide text-white transition-colors duration-200 hover:text-red-50"
-            >Pricing</a
+            >Planes</a
           >
         </li>
         <li>
@@ -69,7 +61,7 @@
         </li>
         <li>
           <a
-            href="/"
+            @click="abrirModal"
             class="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-red-50 hover:bg-red-50 focus:shadow-outline focus:outline-none"
             aria-label="Sign up"
             title="Sign up"
@@ -189,12 +181,13 @@
                 </li>
                 <li>
                   <a
-                    href="/"
+                    @click="abrirModal"
+                  
                     class="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-red-50 hover:bg-red-50 focus:shadow-outline focus:outline-none"
                     aria-label="Inicia Sesion"
                     title="Inicia Sesion"
                   >
-                    Sign up
+                    Iniciar Sesion
                   </a>
                 </li>
               </ul>
@@ -207,11 +200,19 @@
 </template>
 
 <script>
+import {openModal, container} from "jenesius-vue-modal";
+import ModalInicio from "./ModalInicio.vue"
 export default {
   data() {
     return {
       isMenuOpen: false,
     };
   },
+  methods: {
+    abrirModal(){
+      openModal (ModalInicio)
+      this.isMenuOpen = false
+    }
+  }
 };
 </script>
