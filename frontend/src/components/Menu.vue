@@ -11,7 +11,7 @@
         class="inline-flex items-center"
       >
         <svg
-          class="w-8 text-deep-purple-accent-400"
+          class="w-8 text-red-50"
           viewBox="0 0 24 24"
           stroke-linejoin="round"
           stroke-width="2"
@@ -27,7 +27,7 @@
         </svg>
         <span
           class="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase"
-          >Company</span
+          >ChibchaWeb</span
         >
       </a>
       <ul class="flex items-center hidden space-x-8 lg:flex">
@@ -36,8 +36,8 @@
             href="/"
             aria-label="Our product"
             title="Our product"
-            class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-            >Product</a
+            class="font-medium tracking-wide text-white transition-colors duration-200 hover:text-red-50"
+            >Planes</a
           >
         </li>
         <li>
@@ -45,7 +45,7 @@
             href="/"
             aria-label="Our product"
             title="Our product"
-            class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+            class="font-medium tracking-wide text-white transition-colors duration-200 hover:text-red-50"
             >Features</a
           >
         </li>
@@ -54,7 +54,7 @@
             href="#Pricing"
             aria-label="Product pricing"
             title="Product pricing"
-            class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+            class="font-medium tracking-wide text-white transition-colors duration-200 hover:text-red-50"
             >Pricing</a
           >
         </li>
@@ -63,18 +63,18 @@
             href="#About"
             aria-label="About us"
             title="About us"
-            class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+            class="font-medium tracking-wide text-white transition-colors duration-200 hover:text-red-50"
             >About us</a
           >
         </li>
         <li>
           <a
             href="/"
-            class="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+            class="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-red-50 hover:bg-red-50 focus:shadow-outline focus:outline-none"
             aria-label="Sign up"
             title="Sign up"
           >
-            Sign up
+            Inicia Sesión
           </a>
         </li>
       </ul>
@@ -82,7 +82,7 @@
         <button
           aria-label="Open Menu"
           title="Open Menu"
-          class="p-2 -mr-1 transition duration-200 rounded focus:outline-none focus:shadow-outline hover:bg-deep-purple-50 focus:bg-deep-purple-50"
+          class="p-2 -mr-1 transition duration-200 rounded focus:outline-none focus:shadow-outline hover:bg-red-50 focus:bg-red-50"
           @click="isMenuOpen = true"
         >
           <svg class="w-5 text-gray-600" viewBox="0 0 24 24">
@@ -100,18 +100,18 @@
             ></path>
           </svg>
         </button>
-        <div v-if="isMenuOpen" class="absolute bg-red-300 top-0 left-0 w-full z-10">
+        <div v-if="isMenuOpen" class="absolute bg-black top-0 left-0 w-full z-10">
           <div class="p-5 border rounded shadow-sm">
             <div class="flex items-center justify-between mb-4">
               <div>
                 <a
                   href="/"
-                  aria-label="Company"
-                  title="Company"
+                  aria-label="RoboCol"
+                  title="RoboCol"
                   class="inline-flex items-center"
                 >
                   <svg
-                    class="w-8 text-deep-purple-accent-400"
+                    class="w-8 text-red-50"
                     viewBox="0 0 24 24"
                     stroke-linejoin="round"
                     stroke-width="2"
@@ -154,7 +154,7 @@
                     href="/"
                     aria-label="Our product"
                     title="Our product"
-                    class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                    class="font-medium tracking-wide text-white transition-colors duration-200 hover:text-red-50"
                     >Product</a
                   >
                 </li>
@@ -163,7 +163,7 @@
                     href="/"
                     aria-label="Our product"
                     title="Our product"
-                    class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                    class="font-medium tracking-wide text-white transition-colors duration-200 hover:text-red-50"
                     >Features</a
                   >
                 </li>
@@ -173,8 +173,8 @@
                     @click="isMenuOpen = false"
                     aria-label="Product pricing"
                     title="Product pricing"
-                    class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                    >Pricing</a
+                    class="font-medium tracking-wide text-white transition-colors duration-200 hover:text-red-50"
+                    >Planes</a
                   >
                 </li>
                 <li>
@@ -183,16 +183,16 @@
                     @click="isMenuOpen = false"
                     aria-label="About us"
                     title="About us"
-                    class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                    class="font-medium tracking-wide text-white transition-colors duration-200 hover:text-red-50"
                     >About us</a
                   >
                 </li>
                 <li>
                   <a
                     href="/"
-                    class="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-                    aria-label="Sign up"
-                    title="Sign up"
+                    class="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-red-50 hover:bg-red-50 focus:shadow-outline focus:outline-none"
+                    aria-label="Inicia Sesion"
+                    title="Inicia Sesion"
                   >
                     Sign up
                   </a>

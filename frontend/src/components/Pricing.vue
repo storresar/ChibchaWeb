@@ -2,11 +2,11 @@
   <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
     <div class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
       <div>
-        <p class="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-teal-900 uppercase rounded-full bg-teal-accent-400">
+        <p class="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-white uppercase rounded-full bg-red-50">
           Our Pricing
         </p>
       </div>
-      <h2 class="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl md:mx-auto">
+      <h2 class="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-white sm:text-4xl md:mx-auto">
         <span class="relative inline-block">
           <svg viewBox="0 0 52 24" fill="currentColor" class="absolute top-0 left-0 z-0 hidden w-32 -mt-8 -ml-20 text-blue-gray-100 lg:w-32 lg:-ml-28 lg:-mt-10 sm:block">
             <defs>
@@ -16,25 +16,29 @@
             </defs>
             <rect fill="url(#7e5e8ff8-1960-4094-a63a-2a0c0f922d69)" width="52" height="24"></rect>
           </svg>
-          <span class="relative">Transparent</span>
+          <span class="relative">Escoge el plan</span>
         </span>
-        pricing. Pay as you grow.
+        que mas se te acomode.
       </h2>
-      <p class="text-base text-gray-700 md:text-lg">
+      <p class="text-base text-white md:text-lg">
         Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque rem aperiam, eaque ipsa quae.
       </p>
     </div>
     <div class="grid max-w-md gap-10 row-gap-5 lg:max-w-screen-lg sm:row-gap-10 lg:grid-cols-3 xl:max-w-screen-lg sm:mx-auto">
       <div class="flex flex-col justify-between p-8 transition-shadow duration-300 bg-white border rounded shadow-sm sm:items-center hover:shadow">
         <div class="text-center">
-          <div class="text-lg font-semibold">Start</div>
+<div class="text-lg font-semibold">Chibcha-Plata</div>
           <div class="flex items-center justify-center mt-2">
-            <div class="mr-1 text-5xl font-bold">Free</div>
+            <div class="mr-1 text-5xl font-bold">  $50000  </div><br>
+            <div class="text-gray-700">Anual</div>
           </div>
           <div class="mt-2 space-y-3">
-            <div class="text-gray-700">10 deploys per day</div>
-            <div class="text-gray-700">10 GB of storage</div>
-            <div class="text-gray-700">20 domains</div>
+            <div class="text-gray-700">$5000 mensual</div>
+            <div class="text-gray-700">50/Gb de almacenamiento</div>
+            <div class="text-gray-700">Dos sitios web</div>
+            <div class="text-gray-700">Dos cuentas de correo</div>
+            <div class="text-gray-700">SSL gratis</div>
+            <div class="text-gray-700">Dos bases de datos</div>
           </div>
         </div>
         <div>
@@ -49,28 +53,31 @@
           </p>
         </div>
       </div>
-      <div class="relative flex flex-col justify-between p-8 transition-shadow duration-300 bg-white border rounded shadow-sm sm:items-center hover:shadow border-deep-purple-accent-400">
+      <div class="relative flex flex-col justify-between p-8 transition-shadow duration-300 bg-white border rounded shadow-sm sm:items-center hover:shadow border-red-50">
         <div class="absolute inset-x-0 top-0 flex justify-center -mt-3">
-          <div class="inline-block px-3 py-1 text-xs font-medium tracking-wider text-white uppercase rounded bg-deep-purple-accent-400">
+          <div class="inline-block px-3 py-1 text-xs font-medium tracking-wider text-white uppercase rounded bg-red-50">
             Most Popular
           </div>
         </div>
         <div class="text-center">
-          <div class="text-lg font-semibold">Pro</div>
+          <div class="text-lg font-semibold">Chibcha-Oro</div>
           <div class="flex items-center justify-center mt-2">
-            <div class="mr-1 text-5xl font-bold">$38</div>
-            <div class="text-gray-700">/ mo</div>
+            <div class="mr-1 text-5xl font-bold">  $100000  </div><br>
+            <div class="text-gray-700">Anual</div>
           </div>
           <div class="mt-2 space-y-3">
-            <div class="text-gray-700">200 deploys per day</div>
-            <div class="text-gray-700">80 GB of storage</div>
-            <div class="text-gray-700">Global CDN</div>
+            <div class="text-gray-700">$10000 mensual</div>
+            <div class="text-gray-700">100/Gb de almacenamiento</div>
+            <div class="text-gray-700">50 sitios web</div>
+            <div class="text-gray-700">100 cuentas de correo</div>
+            <div class="text-gray-700">SSL gratis</div>
+            <div class="text-gray-700">Cinco bases de datos</div>
           </div>
         </div>
         <div>
           <a
             href="/"
-            class="inline-flex items-center justify-center w-full h-12 px-6 mt-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+            class="inline-flex items-center justify-center w-full h-12 px-6 mt-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-red-50 hover:bg-red-50 focus:shadow-outline focus:outline-none"
           >
             Buy Pro
           </a>
@@ -81,15 +88,19 @@
       </div>
       <div class="flex flex-col justify-between p-8 transition-shadow duration-300 bg-white border rounded shadow-sm sm:items-center hover:shadow">
         <div class="text-center">
-          <div class="text-lg font-semibold">Business</div>
+          <div class="text-lg font-semibold">Platino</div>
           <div class="flex items-center justify-center mt-2">
-            <div class="mr-1 text-5xl font-bold">$78</div>
-            <div class="text-gray-700">/ mo</div>
+            <div class="mr-1 text-5xl font-bold">$150000</div>
+            <div class="text-gray-700">Anual</div>
           </div>
           <div class="mt-2 space-y-3">
-            <div class="text-gray-700">500 GB of storage</div>
-            <div class="text-gray-700">Unlimited domains</div>
-            <div class="text-gray-700">24/7 Support</div>
+            <div class="text-gray-700">15000 mensual</div>
+            <div class="text-gray-700">200Gb de almacenamiento</div>
+            <div class="text-gray-700">200 sitios web</div>
+            <div class="text-gray-700">Correo ilimitado</div>
+            <div class="text-gray-700">SSL gratis</div>
+            <div class="text-gray-700">Bases de datos ilimitadas</div>
+            <div class="text-gray-700">Copias de seguridad </div>
           </div>
         </div>
         <div>
