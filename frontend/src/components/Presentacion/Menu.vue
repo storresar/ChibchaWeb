@@ -62,7 +62,7 @@
         <li>
           <a
             @click="abrirModal"
-            class="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-red-50 hover:bg-red-50 focus:shadow-outline focus:outline-none"
+            class="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-red-50 hover:bg-deep-purple-accent-100 hover:text-black focus:shadow-outline focus:outline-none"
             aria-label="Sign up"
             title="Sign up"
           >
@@ -93,7 +93,7 @@
           </svg>
         </button>
         <div v-if="isMenuOpen" class="absolute bg-black top-0 left-0 w-full z-10">
-          <div class="p-5 border rounded shadow-sm">
+          <div class="p-5 rounded shadow-sm">
             <div class="flex items-center justify-between mb-4">
               <div>
                 <a
@@ -119,7 +119,7 @@
                   </svg>
                   <span
                     class="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase"
-                    >Company</span
+                    >CHIBCHA WEB</span
                   >
                 </a>
               </div>

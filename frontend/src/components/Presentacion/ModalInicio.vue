@@ -1,6 +1,6 @@
 <template>
 <div class="w-full max-w-xs">
-  <form class="bg-red-800 bg-opacity-90 shadow-md rounded px-8 pt-6 pb-8 mb-4">
+  <form class="bg-red-1000 bg-opacity-90 shadow-md rounded px-8 pt-6 pb-8 mb-4">
     <div class="mb-4">
       <label class="block text-white text-sm font-bold mb-2" for="username">
         Usuario
@@ -15,14 +15,14 @@
       <p class="text-white text-xs italic">Entre su contraseña.</p>
     </div>
     <div class="flex items-center justify-start gap-4">
-      <button class="bg-white hover:bg-red-50 text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
-        Sign In
+      <button class="bg-white hover:bg-red-50 text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition-colors duration-200 hover:text-white" type="button">
+        Inicia sesion
       </button>
      <div class=" flex flex-col-reverse" >
-          <a class="inline-block align-baseline font-bold text-sm text-white hover:text-black" href="#">
+          <a class="inline-block align-baseline font-bold text-sm text-white hover:text-red-50 transition-colors duration-200" href="#">
         Olvide mi clave
       </a>
-      <a class="inline-block align-baseline font-bold text-sm text-white hover:text-black" @click="registro">
+      <a class="inline-block align-baseline font-bold text-sm text-white hover:text-red-50 transition-colors duration-200" @click="registro">
         Registrarse
       </a>
      </div>
@@ -36,7 +36,7 @@
 
 
 <script>
-import {openModal, container} from "jenesius-vue-modal";
+import {openModal} from "jenesius-vue-modal";
 import ModalRegistro from "./ModalRegistro.vue"
 export default {
   data() {
