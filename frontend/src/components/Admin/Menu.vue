@@ -1,5 +1,5 @@
 <template>
-  <div class="flex md:flex-col justify-around md:justify-start bg-gray-50">
+  <div class="flex md:flex-col justify-around md:justify-start bg-gray-900">
     <div v-if="isMenuOpen" class="absolute bg-black top-0 left-0 w-full z-10">
           <div class="p-5 rounded shadow-sm">
             <div class="flex items-center justify-between mb-4">
@@ -21,7 +21,7 @@
                   </svg>
                   <span
                     class="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase"
-                    >Company</span
+                    >ChibchaWeb</span
                   >
               </div>
               <div>
@@ -42,54 +42,36 @@
             </div>
             <nav>
               <ul class="space-y-4">
+                <li class="text-white">GENERAL</li>
                 <li>
-                  <a
-                    href="/"
-                    aria-label="Our product"
-                    title="Our product"
-                    class="font-medium tracking-wide text-white transition-colors duration-200 hover:text-red-50"
-                    >Product</a
-                  >
+                  <router-link @click="isMenuOpen = false" to="/admin/userlist" class="ml-2 font-medium tracking-wide text-white transition-colors duration-200 hover:text-red-50 flex gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 self-center" viewBox="0 0 20 20" fill="currentColor">
+                      <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
+                    </svg>
+                    <p>Lista de usuarios</p>
+                  </router-link>
                 </li>
                 <li>
-                  <a
-                    href="/"
-                    aria-label="Our product"
-                    title="Our product"
-                    class="font-medium tracking-wide text-white transition-colors duration-200 hover:text-red-50"
-                    >Features</a
-                  >
+                  <router-link @click="isMenuOpen = false" to="/admin/stats" class="ml-2 font-medium tracking-wide text-white transition-colors duration-200 hover:text-red-50 flex gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 self-center" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z" />
+                    <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z" />
+                  </svg>
+                  <p>Estadisticas</p>
+                  </router-link>
+                </li>
+                <li class="text-white">CUENTA</li>
+                <li class="ml-2 font-medium tracking-wide text-white transition-colors duration-200 hover:text-red-50 flex gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+                    </svg>
+                    <p>Ver perfil</p>
                 </li>
                 <li>
-                  <a
-                    href="#Pricing"
-                    @click="isMenuOpen = false"
-                    aria-label="Product pricing"
-                    title="Product pricing"
-                    class="font-medium tracking-wide text-white transition-colors duration-200 hover:text-red-50"
-                    >Planes</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="#About"
-                    @click="isMenuOpen = false"
-                    aria-label="About us"
-                    title="About us"
-                    class="font-medium tracking-wide text-white transition-colors duration-200 hover:text-red-50"
-                    >About us</a
-                  >
-                </li>
-                <li>
-                  <a
-                    @click="abrirModal"
-                  
-                    class="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-red-50 hover:bg-red-50 focus:shadow-outline focus:outline-none"
-                    aria-label="Inicia Sesion"
-                    title="Inicia Sesion"
-                  >
-                    Iniciar Sesion
-                  </a>
+                  <button
+                  class="ml-2 inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-red-50 hover:bg-purple-accent-700">
+                    Cerrar sesión
+                  </button>
                 </li>
               </ul>
             </nav>
@@ -98,7 +80,7 @@
     <div class="flex flex-col gap-4 p-5 items-start">
       <div class="flex">
         <svg
-        class="w-8 text-red-50"
+        class="w-8 md:w-8 text-red-50"
         viewBox="0 0 24 24"
         stroke-linejoin="round"
         stroke-width="2"
@@ -112,20 +94,45 @@
           <rect x="14" y="1" width="7" height="6"></rect>
           <rect x="14" y="11" width="7" height="12"></rect>
         </svg>
-        <span class="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
+        <span class="ml-2 lg:text-2xl sm:text-xl font-bold tracking-wide text-gray-800 uppercase self-center">
           ChibchaWeb
         </span>
       </div>
-      <ul class="hidden md:block">
+      <ul class="hidden md:flex md:flex-col gap-4 mt-4">
+        <li class="text-white">GENERAL</li>
         <li>
-          <router-link to="/admin/stats">Estadisticas</router-link>
+          <router-link to="/admin/userlist" class="ml-2 font-medium tracking-wide text-white transition-colors duration-200 hover:text-red-50 flex gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 self-center" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
+            </svg>
+            <p>Lista de usuarios</p>
+          </router-link>
         </li>
         <li>
-          <router-link to="/admin/userlist">Lista de Usuarios</router-link>
+          <router-link to="/admin/stats" class="ml-2 font-medium tracking-wide text-white transition-colors duration-200 hover:text-red-50 flex gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 self-center" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z" />
+              <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z" />
+            </svg>
+            <p>Estadisticas</p>
+          </router-link>
+        </li>
+        <li class="text-white">CUENTA</li>
+        <li class="ml-2 font-medium tracking-wide text-white transition-colors duration-200 hover:text-red-50 flex gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+            </svg>
+            <p>Ver perfil</p>
+        </li>
+        <li>
+          <button
+          class="ml-2 inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-red-50 hover:bg-purple-accent-700">
+            Cerrar sesión
+          </button>
         </li>
       </ul>
     </div>
-    <div class="md:hidden grid place-self-center ">
+    <div class="md:hidden grid place-self-center">
       <button
       aria-label="Close Menu"
       title="Close Menu"

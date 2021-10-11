@@ -1,6 +1,6 @@
 <template>
     <div>
-      <div class="relative flex flex-col-reverse py-16 lg:py-0 lg:flex-col">
+      <div id="HeaderInfo" class="relative flex flex-col-reverse py-16 lg:py-0 lg:flex-col">
         <div class="w-full max-w-xl px-4 mx-auto md:px-0 lg:px-8 lg:py-20 lg:max-w-screen-xl">
           <div class="mb-0 lg:max-w-lg lg:pr-8 xl:pr-6">
           <h2 class="mb-5 font-sans text-3xl font-bold tracking-tight text-white sm:text-4xl sm:leading-none md:text-center">

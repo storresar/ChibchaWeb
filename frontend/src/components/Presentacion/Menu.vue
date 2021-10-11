@@ -34,7 +34,7 @@
         
         <li>
           <a
-            href="/"
+            href="#HeaderInfo"
             aria-label="Our product"
             title="Our product"
             class="font-medium tracking-wide text-white transition-colors duration-200 hover:text-red-50"
@@ -97,7 +97,6 @@
             <div class="flex items-center justify-between mb-4">
               <div>
                 <a
-                  href="/"
                   aria-label="RoboCol"
                   title="RoboCol"
                   class="inline-flex items-center"
@@ -143,16 +142,8 @@
               <ul class="space-y-4">
                 <li>
                   <a
-                    href="/"
-                    aria-label="Our product"
-                    title="Our product"
-                    class="font-medium tracking-wide text-white transition-colors duration-200 hover:text-red-50"
-                    >Product</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="/"
+                    href="#HeaderInfo"
+                    @click="isMenuOpen = false"
                     aria-label="Our product"
                     title="Our product"
                     class="font-medium tracking-wide text-white transition-colors duration-200 hover:text-red-50"
