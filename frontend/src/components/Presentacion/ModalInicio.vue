@@ -42,9 +42,10 @@
 
 
 <script>
-import { openModal } from "jenesius-vue-modal";
+import { openModal, closeModal } from "jenesius-vue-modal";
 import ModalRegistro from "./ModalRegistro.vue";
-import { mapActions } from "vuex"
+import { mapActions, mapGetters } from "vuex"
+
 export default {
   data() {
     return {
@@ -53,16 +54,34 @@ export default {
       password: '',
     };
   },
+  computed: {
+    ...mapGetters(['getUser'])
+  },
   methods: {
     ...mapActions(["retrieveUser", "authenticate"]),
     registro(){
-      openModal (ModalRegistro)
+      openModal(ModalRegistro)
       this.isMenuOpen = false
     },
     login() {
-      this.authenticate({
-        username: this.username,
-        password: this.password,
+      this.authenticate({username: this.username, password: this.password})
+      .then(() => {
+        closeModal()
+        const rol = this.getUser.rol
+        switch (rol) {
+          case 1:
+            console.log(1, 'admin');
+            this.$router.push('/admin')
+            break
+          case 2:
+            console.log(2, 'empleado');
+            this.$router.push('/empleado')
+            break
+          case 3:
+            console.log(3, 'cliente');
+            this.$router.push('/cliente')
+            break
+        }
       })
     }
   }
