@@ -1,8 +1,8 @@
 <template>
     <div class="flex flex-col overflow-x-auto overflow-y-hidden ">
         <div class="">
-            <div class="py-2 align-middle inline-block min-w-full lg:px-8">
-            <div class=" overflow-hidden border rounded-xl shadow border-gray-200">
+            <div class="py-2 align-middle inline-block min-w-full lg:px-4">
+            <div class=" overflow-hidden border rounded shadow border-gray-200">
                 <table class="min-w-full divide-y divide-gray-200">
                 <thead class="bg-gray-50">
                     <tr>

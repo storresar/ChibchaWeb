@@ -90,7 +90,7 @@
     <div class="flex flex-col gap-4 p-5 items-start">
       <div class="flex">
         <svg
-        class="w-8 md:w-8 text-red-50"
+        class="w-8 md:w-6 text-red-50"
         viewBox="0 0 24 24"
         stroke-linejoin="round"
         stroke-width="2"
@@ -104,7 +104,7 @@
           <rect x="14" y="1" width="7" height="6"></rect>
           <rect x="14" y="11" width="7" height="12"></rect>
         </svg>
-        <span class="ml-2 sm:text-xl md:text-lg font-bold tracking-wide text-gray-800 uppercase self-center">
+        <span class="ml-2 sm:text-xl md:text-base font-bold tracking-wide text-white uppercase self-center">
           ChibchaWeb
         </span>
       </div>
