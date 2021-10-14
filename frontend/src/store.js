@@ -36,7 +36,8 @@ const store = createStore({
     },
     storeUsers: (state, users) => {
       if (state.user) {
-        state.users = users.map(obj => obj.id != state.user.id)
+        state.users = users.filter(obj => obj.id != state.user.id)
+        console.log(state.users);
       } else {
         state.users = users
       }
