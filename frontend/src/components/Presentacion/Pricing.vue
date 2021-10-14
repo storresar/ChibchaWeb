@@ -3,16 +3,14 @@
     <div class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
       <div>
         <p class="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-white uppercase rounded-full bg-red-50">
-          Our Pricing
+          Nuestros Planes
         </p>
       </div>
       <h2 class="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-white sm:text-4xl md:mx-auto">
         <span class="relative inline-block">
           <svg viewBox="0 0 52 24" fill="currentColor" class="absolute top-0 left-0 z-0 hidden w-32 -mt-8 -ml-20 text-blue-gray-100 lg:w-32 lg:-ml-28 lg:-mt-10 sm:block">
             <defs>
-              <pattern id="7e5e8ff8-1960-4094-a63a-2a0c0f922d69" x="0" y="0" width=".135" height=".30">
-                <circle cx="1" cy="1" r=".7"></circle>
-              </pattern>
+
             </defs>
             <rect fill="url(#7e5e8ff8-1960-4094-a63a-2a0c0f922d69)" width="52" height="24"></rect>
           </svg>
@@ -21,12 +19,13 @@
         que mas se te acomode.
       </h2>
       <p class="text-base text-white md:text-lg">
-        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque rem aperiam, eaque ipsa quae.
+        A continuación podras ver cada caracteristica de nuestros planes
       </p>
     </div>
     <div class="grid max-w-md gap-10 row-gap-5 lg:max-w-screen-lg sm:row-gap-10 lg:grid-cols-3 xl:max-w-screen-lg sm:mx-auto">
       <div class="flex flex-col justify-between p-8 transition-shadow duration-300 bg-white border rounded shadow-sm sm:items-center hover:shadow">
         <div class="text-center">
+          <img src="chibchaplata.png" alt="" class="w-56 md:w-60 m-auto" >
 <div class="text-lg font-semibold">Chibcha-Plata</div>
           <div class="flex items-center justify-center mt-2">
             <div class="mr-1 text-5xl font-bold">  $50000  </div><br>
@@ -46,10 +45,10 @@
             href="/"
             class="inline-flex items-center justify-center w-full h-12 px-6 mt-6 font-medium tracking-wide text-white transition duration-200 bg-gray-800 rounded shadow-md hover:bg-gray-900 focus:shadow-outline focus:outline-none"
           >
-            Start for free
+            Comprar 
           </a>
           <p class="max-w-xs mt-6 text-xs text-gray-600 sm:text-sm sm:text-center sm:max-w-sm sm:mx-auto">
-            Sed ut unde omnis iste natus accusantium doloremque.
+           
           </p>
         </div>
       </div>
@@ -60,6 +59,7 @@
           </div>
         </div>
         <div class="text-center">
+          <img src="chibchaoro.png" alt="" class="w-56 md:w-60 m-auto" >
           <div class="text-lg font-semibold">Chibcha-Oro</div>
           <div class="flex items-center justify-center mt-2">
             <div class="mr-1 text-5xl font-bold">  $100000  </div><br>
@@ -79,10 +79,10 @@
             href="/"
             class="inline-flex items-center justify-center w-full h-12 px-6 mt-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-red-50 hover:bg-red-50 focus:shadow-outline focus:outline-none"
           >
-            Buy Pro
+            Comprar 
           </a>
           <p class="max-w-xs mt-6 text-xs text-gray-600 sm:text-sm sm:text-center sm:max-w-sm sm:mx-auto">
-            Sed ut unde omnis iste natus accusantium doloremque.
+           
           </p>
         </div>
       </div>
@@ -108,10 +108,9 @@
             href="/"
             class="inline-flex items-center justify-center w-full h-12 px-6 mt-6 font-medium tracking-wide text-white transition duration-200 bg-gray-800 rounded shadow-md hover:bg-gray-900 focus:shadow-outline focus:outline-none"
           >
-            Buy Business
+            Comprar 
           </a>
           <p class="max-w-xs mt-6 text-xs text-gray-600 sm:text-sm sm:text-center sm:max-w-sm sm:mx-auto">
-            Sed ut unde omnis iste natus accusantium doloremque.
           </p>
         </div>
       </div>

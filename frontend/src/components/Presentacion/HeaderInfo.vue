@@ -11,12 +11,7 @@
           Encuentra tu hosting perfecto de acuerdo a tus necesidades, explora a continuación más acerca de nosotros
           </p>
           <div class="mb-10 text-center md:mb-16 lg:mb-20">
-          <a
-            href="/"
-            class="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto bg-red-50 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-          >
-            Ver más
-          </a>
+          
         </div>
         <div class="flex flex-col items-center">
           <div class="mb-2 text-sm text-white md:mb-2">Follow us</div>
