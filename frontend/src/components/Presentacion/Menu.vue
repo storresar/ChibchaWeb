@@ -26,7 +26,7 @@
           <rect x="14" y="11" width="7" height="12"></rect>
         </svg>
         <span
-          class="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase"
+          class="ml-2 text-xl font-bold tracking-wide text-white uppercase"
           >ChibchaWeb</span
         >
       </a>
@@ -38,7 +38,7 @@
             aria-label="Our product"
             title="Our product"
             class="font-medium tracking-wide text-white transition-colors duration-200 hover:text-red-50"
-            >Features</a
+            >Inicio</a
           >
         </li>
         <li>
@@ -56,7 +56,7 @@
             aria-label="About us"
             title="About us"
             class="font-medium tracking-wide text-white transition-colors duration-200 hover:text-red-50"
-            >About us</a
+            >Quienes somos</a
           >
         </li>
         <li>
@@ -117,7 +117,7 @@
                     <rect x="14" y="11" width="7" height="12"></rect>
                   </svg>
                   <span
-                    class="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase"
+                    class="ml-2 text-xl font-bold tracking-wide text-white uppercase"
                     >CHIBCHA WEB</span
                   >
                 </a>
@@ -147,7 +147,7 @@
                     aria-label="Our product"
                     title="Our product"
                     class="font-medium tracking-wide text-white transition-colors duration-200 hover:text-red-50"
-                    >Features</a
+                    >Inicio</a
                   >
                 </li>
                 <li>
@@ -167,7 +167,7 @@
                     aria-label="About us"
                     title="About us"
                     class="font-medium tracking-wide text-white transition-colors duration-200 hover:text-red-50"
-                    >About us</a
+                    >Quienes Somos</a
                   >
                 </li>
                 <li>
