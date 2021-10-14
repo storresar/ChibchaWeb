@@ -60,15 +60,25 @@
                   <p>Estadisticas</p>
                   </router-link>
                 </li>
+                <li>
+                  <router-link to="/admin/audit" class="ml-2 font-medium tracking-wide text-white transition-colors duration-200 hover:text-red-50 flex gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                    </svg>
+                    <p>Auditoria</p>
+                  </router-link>
+                </li>
                 <li class="text-white">CUENTA</li>
-                <li class="ml-2 font-medium tracking-wide text-white transition-colors duration-200 hover:text-red-50 flex gap-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <li>
+                  <router-link to="/admin/profile" class="ml-2 font-medium tracking-wide text-white transition-colors duration-200 hover:text-red-50 flex gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                       <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
                     </svg>
                     <p>Ver perfil</p>
+                  </router-link>
                 </li>
                 <li>
-                  <button
+                  <button @click="logout"
                   class="ml-2 inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-red-50 hover:bg-purple-accent-700">
                     Cerrar sesión
                   </button>
@@ -94,7 +104,7 @@
           <rect x="14" y="1" width="7" height="6"></rect>
           <rect x="14" y="11" width="7" height="12"></rect>
         </svg>
-        <span class="ml-2 lg:text-2xl sm:text-xl font-bold tracking-wide text-gray-800 uppercase self-center">
+        <span class="ml-2 sm:text-xl md:text-lg font-bold tracking-wide text-gray-800 uppercase self-center">
           ChibchaWeb
         </span>
       </div>
@@ -117,15 +127,25 @@
             <p>Estadisticas</p>
           </router-link>
         </li>
+        <li>
+          <router-link to="/admin/audit" class="ml-2 font-medium tracking-wide text-white transition-colors duration-200 hover:text-red-50 flex gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+            </svg>
+            <p>Auditoria</p>
+          </router-link>
+        </li>
         <li class="text-white">CUENTA</li>
-        <li class="ml-2 font-medium tracking-wide text-white transition-colors duration-200 hover:text-red-50 flex gap-2">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+        <li>
+          <router-link to="/admin/profile" class="ml-2 font-medium tracking-wide text-white transition-colors duration-200 hover:text-red-50 flex gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
               <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
             </svg>
             <p>Ver perfil</p>
+          </router-link>
         </li>
         <li>
-          <button
+          <button @click="logout"
           class="ml-2 inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-red-50 hover:bg-purple-accent-700">
             Cerrar sesión
           </button>
@@ -162,6 +182,7 @@
 
 <script>
 import {openModal} from "jenesius-vue-modal";
+import { mapMutations } from 'vuex';
 export default {
   data() {
     return {
@@ -169,9 +190,14 @@ export default {
     };
   },
   methods: {
+    ...mapMutations(['logoutUser']),
     abrirModal(){
       openModal (ModalInicio)
       this.isMenuOpen = false
+    },
+    logout(){
+      this.logoutUser()
+      this.$router.push("/")
     }
   }
 };

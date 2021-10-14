@@ -1,9 +1,9 @@
 <template>
-    <div class="md:grid md:grid-cols-4 lg:grid-cols-6 h-screen">
+    <div class="md:grid md:grid-rows-1 md:grid-cols-4 lg:grid-cols-6 h-screen">
         <Menu class="md:col-span-1 md:col-start-1 flex"/>
-        <transition name="fade">
-          <router-view class="md:col-span-3 lg:col-span-5 bg-gray-300"></router-view>
-        </transition>
+          <transition name="fade">
+            <router-view class="md:col-span-3 md:col-start-2 lg:col-start-2 lg:col-span-5"></router-view>
+          </transition>
     </div>
 </template>
 
@@ -17,7 +17,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .fade-enter-active, .fade-leave-active {
   transition: opacity .5s ease;
 }
@@ -26,3 +26,5 @@ export default {
   opacity: 0;
 }
 </style>
+
+

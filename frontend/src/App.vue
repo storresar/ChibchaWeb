@@ -1,22 +1,43 @@
 <template>
   <div>
-    <router-view/>
+    <router-view v-slot="{ Component }">
+          <transition name="fade">
+            <component :is="Component" />
+          </transition>
+        </router-view>
     <widget-container-modal />
   </div>
   
 
 </template>
-
 <style>
 html {
   scroll-behavior: smooth;
 }
 </style>
+<style scoped>
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s ease;
+}
+
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+}
+</style>
 <script>
     import {container} from "jenesius-vue-modal";
 
+    //Necesito que la api me pueda devolver el usuario por el token
+    //import { useStore } from "vuex";
+
     export default {
         components: {WidgetContainerModal: container},
-        name: "App"
+        name: "App",
+        //  setup() {
+        //    if (window.localStorage.getItem('token') && window.localStorage.getItem('')) {
+        //      const store = useStore()
+        //      store.dispatch("retrieveUser", wid)
+        //    }
     }
 </script>

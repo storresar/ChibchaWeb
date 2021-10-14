@@ -3,6 +3,8 @@ import NotFound from './views/NotFound.vue'
 import Admin from './views/Admin.vue'
 import MainStats from './views/Admin/MainStats.vue'
 import UserList from './views/Admin/UserList.vue'
+import Audit from './views/Admin/Audit.vue'
+import Profile from './views/Admin/Profile.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import { useStore } from 'vuex'
 
@@ -24,6 +26,14 @@ const routes = [
       {
         path: 'userlist',
         component: UserList,
+      },
+      {
+        path: 'audit',
+        component: Audit,
+      },
+      {
+        path: 'profile',
+        component: Profile,
       }
     ]
   }
