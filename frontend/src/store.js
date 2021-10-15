@@ -49,6 +49,7 @@ const store = createStore({
       if (res.ok) {
         var data = await res.json()
         context.commit('loginUser', data)
+        return true
       } else throw 'Error del servidor, intentelo mas tarde'
     },
     async authenticate(context, credentials) {
@@ -75,7 +76,20 @@ const store = createStore({
         const users = await res.json()
         context.commit('storeUsers', users)
       } else throw 'Error del servidor'
-    }
+    },
+    async createUser(context, user) {
+      var res = await fetch(`${apiBase}usuarios/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(user)
+      })
+      if (res.ok) {
+        if (context.getters.getToken) context.dispatch('getUserList')
+        return 'Exito'
+      } else throw 'Error en el registro. Intentelo más tarde'
+    },
   }
 })
 

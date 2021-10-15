@@ -47,7 +47,7 @@
         @blur="vldate.email.$touch"
         :class="vldate.email.$error ? 'border-red-500' : 'border-gray-200'"
         class="appearance-none block w-full bg-gray-200 border transition-colors duration-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-        type="email" placeholder="jane.doe@company.com">
+        placeholder="jane.doe@company.com">
         <p v-show="vldate.email.$error" class="text-red-50 text-xs italic">Ingrese un correo valido</p>
       </div>
     </div>
@@ -87,12 +87,16 @@
 </template>
 
 <script>
-import { reactive, computed } from "vue";
+import { reactive, computed, inject } from "vue";
 import useVuelidate from "@vuelidate/core";
 import { required, email, sameAs, minLength, maxLength, alphaNum } from "@vuelidate/validators";
+import { useStore } from 'vuex';
 
 export default {
   setup() {
+
+    const swal = inject('$swal')
+    const store = useStore()
 
     const tildeMatch = value => {
       const pattern = new RegExp(/^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/)
@@ -105,12 +109,12 @@ export default {
     }
 
     const datos = reactive({
-      firstName: "",
-      lastName: "",
-      username: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
+      firstName: "Laura",
+      lastName: "Chiquillo",
+      username: "Lchiquillo",
+      email: "lchiquillo@unbosque.edu.co",
+      password: "Plumitas122302",
+      confirmPassword: "Plumitas122302",
     });
 
     const passwordRef = computed(() => datos.password)
@@ -130,6 +134,30 @@ export default {
 
     const sendForm = async () => {
       const result = await vldate.value.$validate()
+      if (result){
+        const user = {
+          username: datos.username,
+          password: datos.password,
+          first_name: datos.firstName,
+          last_name: datos.lastName,
+          email: datos.email,
+          rol: 3,
+          date_joined: new Date(),
+          intentos_loggeo: 0,
+          is_active: true
+        }
+        swal.fire({
+          title: 'Please Wait !',
+          html: 'data uploading',
+          allowOutsideClick: false,
+          onBeforeOpen: () => {
+            swal.showLoading()
+          },
+        });
+        store.dispatch('createUser', user)
+        .then(() => swal.fire({title: 'Exito en registro :3', icon:'success'}))
+        .catch(() => swal.fire({title: 'Error en el registo :c', icon:'error'}))
+      }
       
     }
 

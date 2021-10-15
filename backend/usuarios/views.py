@@ -18,9 +18,9 @@ class UsuarioViewSet(viewsets.ModelViewSet):
         mensaje += '\nUsuario:  ' + request.data['username'] + '\n'
         mensaje += 'Contraseña:  ' + request.data['password'] + '\n'
         send_mail(subject='Creacion de cuenta',message=mensaje,from_email=None,recipient_list=[request.data['email']])   
-        request.data._mutable = True
+        #request.data._mutable = True
         request.data['password'] = make_password(request.data['password']) 
-        request.data._mutable = False
+        #request.data._mutable = False
         return super(UsuarioViewSet, self).create(request)
 
 class CustomAuthToken(ObtainAuthToken):
