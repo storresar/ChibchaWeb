@@ -13,7 +13,7 @@ class UsuarioViewSet(viewsets.ModelViewSet):
     queryset = usuario.objects.all()
     serializer_class = usuario_serializer
 
-<<<<<<< Updated upstream
+
     def create(self, request):
         mensaje = '¡Felicidades! Usted se ha registrado exitosamente en ChibchaWeb.\n'
         mensaje += 'A continuacion mostaremos sus credenciales, por favor no las difunda con nadie mas.'
@@ -24,7 +24,7 @@ class UsuarioViewSet(viewsets.ModelViewSet):
         request.data['password'] = make_password(request.data['password']) 
         #request.data._mutable = False
         return super(UsuarioViewSet, self).create(request)
-=======
+
     def retrieve(self, request, *args, **kwargs):
         instance = self.get_object()
         serializer = self.get_serializer(instance)
@@ -81,7 +81,6 @@ class UsuarioViewSet(viewsets.ModelViewSet):
         nueva_auditoria.save()
         self.perform_destroy(instance)
         return self.list(request)
->>>>>>> Stashed changes
 
 class CustomAuthToken(ObtainAuthToken):
 
