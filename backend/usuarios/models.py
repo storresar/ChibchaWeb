@@ -19,6 +19,17 @@ class usuario(AbstractUser):
     def __str__(self):
         return self.username
 
+class cliente(models.Model):
+    cod_usuario = models.OneToOneField(usuario, on_delete=models.CASCADE, null=False)
+    cod_plan = models.PositiveSmallIntegerField(default=0)
+    cod_tipo_tarjeta = models.PositiveSmallIntegerField(default=0)
+    num_tarjeta = models.TextField(max_length=50)
+    cvv = models.TextField(max_length=50)
+
+class empleado(models.Model):
+    cod_usuario = models.OneToOneField(usuario, on_delete=models.CASCADE, null=False)
+    nivel_empleado = models.PositiveSmallIntegerField(default=0)
+
 
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)
 def create_auth_token(sender, instance=None, created=False, **kwargs):
