@@ -88,6 +88,7 @@
       </div>
       <div class="flex flex-col justify-between p-8 transition-shadow duration-300 bg-white border rounded shadow-sm sm:items-center hover:shadow">
         <div class="text-center">
+          <img src="chibchaplatino2.png" alt="" class="w-56 md:w-60 m-auto" >
           <div class="text-lg font-semibold">Platino</div>
           <div class="flex items-center justify-center mt-2">
             <div class="mr-1 text-5xl font-bold">$150000</div>
