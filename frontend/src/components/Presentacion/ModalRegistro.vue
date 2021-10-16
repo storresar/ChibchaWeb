@@ -147,12 +147,12 @@ export default {
           is_active: true
         }
         swal.fire({
-          title: 'Please Wait !',
-          html: 'data uploading',
+          title: 'Espere un momento',
+          html: 'estamos registrandolo en el sistema',
           allowOutsideClick: false,
-          onBeforeOpen: () => {
+          didOpen: () => {
             swal.showLoading()
-          },
+          }
         });
         store.dispatch('createUser', user)
         .then(() => swal.fire({title: 'Exito en registro :3', icon:'success'}))
