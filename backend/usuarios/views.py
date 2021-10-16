@@ -19,13 +19,15 @@ class UsuarioViewSet(viewsets.ModelViewSet):
         return Response(serializer.data)
 
     def create(self, request, *args, **kwargs):
+        contrasenia = request.data['password']
+        request.data['password'] = make_password(request.data['password'])
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         if(serializer.is_valid):
             mensaje = '¡Felicidades! Usted se ha registrado exitosamente en ChibchaWeb.\n'
             mensaje += 'A continuacion mostaremos sus credenciales, por favor no las difunda con nadie mas.'
             mensaje += '\nUsuario:  ' + request.data['username'] + '\n'
-            mensaje += 'Contraseña:  ' + request.data['password'] + '\n'
+            mensaje += 'Contraseña:  ' + contrasenia + '\n'
             send_mail(subject='Creacion de cuenta',message=mensaje,from_email=None,recipient_list=[request.data['email']])
             nueva_auditoria = auditoria(
                 tipo = 'Creación usuario', 
@@ -35,8 +37,7 @@ class UsuarioViewSet(viewsets.ModelViewSet):
             )
             nueva_auditoria.save()
         self.perform_create(serializer)
-        #request.data._mutable = True
-        request.data['password'] = make_password(request.data['password']) 
+        #request.data._mutable = True 
         #request.data._mutable = False
         return Response(serializer.data)
 

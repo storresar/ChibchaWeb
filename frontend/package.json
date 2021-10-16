@@ -13,6 +13,7 @@
     "@tailwindcss/line-clamp": "^0.2.2",
     "@tailwindcss/postcss7-compat": "^2.0.2",
     "@tailwindcss/typography": "^0.4.1",
+    "@vue-stripe/vue-stripe": "^4.2.5",
     "@vuelidate/core": "^2.0.0-alpha.28",
     "@vuelidate/validators": "^2.0.0-alpha.23",
     "autoprefixer": "^9",
