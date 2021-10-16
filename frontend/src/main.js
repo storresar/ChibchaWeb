@@ -5,9 +5,9 @@ import router from './routes.js'
 import store from './store.js'
 import VueSweetalert2 from 'vue-sweetalert2'
 import 'sweetalert2/dist/sweetalert2.min.css'
+import './assets/tailwind.css'
 
 
-console.log(import.meta.env);
 
 const app = createApp(App)
 

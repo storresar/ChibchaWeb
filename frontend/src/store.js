@@ -2,7 +2,6 @@ import { createStore } from 'vuex'
 
 const apiBase = 'http://127.0.0.1:8000/api/'
 
-const authHeaders = new Headers()
 // Create a new store instance.
 const store = createStore({
   state () {

@@ -7,8 +7,6 @@ import Audit from './views/Admin/Audit.vue'
 import Profile from './views/Admin/Profile.vue'
 import Client from './views/Client.vue'
 import { createRouter, createWebHistory } from 'vue-router'
-import { useStore } from 'vuex'
-
 
 
 /** @type {import('vue-router').RouterOptions['routes']} */
