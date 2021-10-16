@@ -4,21 +4,7 @@
           <div class="p-5 rounded shadow-sm">
             <div class="flex items-center justify-between mb-4">
               <div class="inline-flex">
-                  <svg
-                    class="w-8 text-red-50"
-                    viewBox="0 0 24 24"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-miterlimit="10"
-                    stroke="currentColor"
-                    fill="none"
-                  >
-                    <rect x="3" y="1" width="7" height="12"></rect>
-                    <rect x="3" y="17" width="7" height="6"></rect>
-                    <rect x="14" y="1" width="7" height="6"></rect>
-                    <rect x="14" y="11" width="7" height="12"></rect>
-                  </svg>
+                  <img src="chibchaoro.png" alt="" class="w-16 md:w-16 m-auto" >
                   <span
                     class="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase"
                     >ChibchaWeb</span
@@ -89,21 +75,8 @@
     </div>
     <div class="flex flex-col gap-4 p-5 items-start">
       <div class="flex">
-        <svg
-        class="w-8 md:w-6 text-red-50"
-        viewBox="0 0 24 24"
-        stroke-linejoin="round"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-miterlimit="10"
-        stroke="currentColor"
-        fill="none"
-        >
-          <rect x="3" y="1" width="7" height="12"></rect>
-          <rect x="3" y="17" width="7" height="6"></rect>
-          <rect x="14" y="1" width="7" height="6"></rect>
-          <rect x="14" y="11" width="7" height="12"></rect>
-        </svg>
+          <img src="chibchaoro.png" alt="" class="w-16 md:w-16 m-auto" >
+         
         <span class="ml-2 sm:text-xl md:text-base font-bold tracking-wide text-white uppercase self-center">
           ChibchaWeb
         </span>
