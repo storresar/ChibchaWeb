@@ -34,6 +34,9 @@ html {
     export default {
         components: {WidgetContainerModal: container},
         name: "App",
+
+
+
         //  setup() {
         //    if (window.localStorage.getItem('token') && window.localStorage.getItem('')) {
         //      const store = useStore()

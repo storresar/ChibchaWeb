@@ -5,6 +5,7 @@ import MainStats from './views/Admin/MainStats.vue'
 import UserList from './views/Admin/UserList.vue'
 import Audit from './views/Admin/Audit.vue'
 import Profile from './views/Admin/Profile.vue'
+import Client from './views/Client.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import { useStore } from 'vuex'
 
@@ -36,6 +37,11 @@ const routes = [
         component: Profile,
       }
     ]
+  },
+  {
+    path: '/client',
+    component: Client,
+    meta: {authRequired: true, clientRequired : true}
   }
 ]
 
