@@ -5,7 +5,8 @@
             <div class="px-4 py-2">
                 <h4 class="text-xl">Usuarios Registados</h4>
                 <div class="flex gap-2">
-                    <button class="my-2 inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-red-50 hover:bg-purple-accent-700">Agregar nuevo usuario</button>
+                    <button @click="abrirModalRegistro"
+                    class="my-2 inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-red-50 hover:bg-purple-accent-700">Agregar nuevo usuario</button>
                 </div>
             </div>
             <suspense>
@@ -17,9 +18,17 @@
 
 <script>
 import DataTable from '../../components/Admin/DataTable.vue'
+import { openModal } from "jenesius-vue-modal";
+import ModalRegistro from '../../components/Admin/ModalRegistro.vue'
 
 export default {
     components: {DataTable},
+
+    methods: {
+        abrirModalRegistro(){
+            openModal(ModalRegistro)
+        }
+    }
 
 }
 </script>

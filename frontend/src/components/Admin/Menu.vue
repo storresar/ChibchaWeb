@@ -154,9 +154,9 @@
 </template>
 
 <script>
-import {openModal} from "jenesius-vue-modal";
+import { openModal } from "jenesius-vue-modal";
 import { mapMutations } from 'vuex';
-import {ModalInicio } from '../Presentacion/ModalInicio.vue'
+import { ModalInicio } from '../Presentacion/ModalInicio.vue'
 
 export default {
   data() {

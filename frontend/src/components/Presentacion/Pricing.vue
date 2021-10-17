@@ -26,7 +26,7 @@
       <div class="flex flex-col justify-between p-8 transition-shadow duration-300 bg-white border rounded shadow-sm sm:items-center hover:shadow">
         <div class="text-center">
           <img src="chibchaplata.png" alt="" class="w-56 md:w-60 m-auto" >
-<div class="text-lg font-semibold">Chibcha-Plata</div>
+          <div class="text-lg font-semibold">Chibcha-Plata</div>
           <div class="flex items-center justify-center mt-2">
             <div class="mr-1 text-5xl font-bold">  $50000  </div><br>
             <div class="text-gray-700">Anual</div>
@@ -41,15 +41,7 @@
           </div>
         </div>
         <div>
-          <a
-            href="/"
-            class="inline-flex items-center justify-center w-full h-12 px-6 mt-6 font-medium tracking-wide text-white transition duration-200 bg-gray-800 rounded shadow-md hover:bg-gray-900 focus:shadow-outline focus:outline-none"
-          >
-            Comprar 
-          </a>
-          <p class="max-w-xs mt-6 text-xs text-gray-600 sm:text-sm sm:text-center sm:max-w-sm sm:mx-auto">
-           
-          </p>
+          <Checkout :priceMonth="chibchaPlataMes" :priceYear="chibchaPlataAnual"/>
         </div>
       </div>
       <div class="relative flex flex-col justify-between p-8 transition-shadow duration-300 bg-white border rounded shadow-sm sm:items-center hover:shadow border-red-50">
@@ -75,15 +67,7 @@
           </div>
         </div>
         <div>
-          <a
-            href="/"
-            class="inline-flex items-center justify-center w-full h-12 px-6 mt-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-red-50 hover:bg-red-50 focus:shadow-outline focus:outline-none"
-          >
-            Comprar 
-          </a>
-          <p class="max-w-xs mt-6 text-xs text-gray-600 sm:text-sm sm:text-center sm:max-w-sm sm:mx-auto">
-           
-          </p>
+          <Checkout :priceMonth="chibchaOroMes" :priceYear="chibchaOroAnual"/>
         </div>
       </div>
       <div class="flex flex-col justify-between p-8 transition-shadow duration-300 bg-white border rounded shadow-sm sm:items-center hover:shadow">
@@ -106,16 +90,35 @@
           </div>
         </div>
         <div>
-          <a
-            href="/"
-            class="inline-flex items-center justify-center w-full h-12 px-6 mt-6 font-medium tracking-wide text-white transition duration-200 bg-gray-800 rounded shadow-md hover:bg-gray-900 focus:shadow-outline focus:outline-none"
-          >
-            Comprar 
-          </a>
-          <p class="max-w-xs mt-6 text-xs text-gray-600 sm:text-sm sm:text-center sm:max-w-sm sm:mx-auto">
-          </p>
+          <Checkout :priceMonth="chibchaPlataMes" :priceYear="chibchaPlataAnual"/>
         </div>
       </div>
     </div>
   </div>
 </template>
+
+<script>
+import Checkout from '../Checkout.vue'
+
+export default {
+  components: {
+    Checkout,
+  },
+  setup() {
+    const chibchaPlataMes = 'price_1Jl1LXKBVmtCgeqMmZod5G3C'
+    const chibchaPlataAnual = 'price_1JlI5eKBVmtCgeqM7jAxKVBs'
+    const chibchaOroMes = 'price_1JlHq4KBVmtCgeqM9F0UZYGJ'
+    const chibchaOroAnual = 'price_1JlI7qKBVmtCgeqMQKepGAvT'
+    const chibchaPlatinoMes = 'price_1JlI99KBVmtCgeqMcDoKqXZV'
+    const chibchaPlatinoAnual = 'price_1JlHsjKBVmtCgeqMefodMW1w'
+    return {
+      chibchaPlataMes,
+      chibchaPlataAnual,
+      chibchaOroMes,
+      chibchaOroAnual,
+      chibchaPlatinoMes,
+      chibchaPlatinoAnual,
+    }
+  },
+}
+</script>
