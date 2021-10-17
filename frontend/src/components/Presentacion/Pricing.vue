@@ -90,7 +90,7 @@
           </div>
         </div>
         <div>
-          <Checkout :priceMonth="chibchaPlataMes" :priceYear="chibchaPlataAnual"/>
+         <Checkout :priceMonth="chibchaPlataMes" :priceYear="chibchaPlataAnual"/>
         </div>
       </div>
     </div>

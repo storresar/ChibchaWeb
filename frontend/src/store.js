@@ -8,6 +8,8 @@ const store = createStore({
     return {
       user : undefined,
       users : undefined,
+      tickets : undefined,
+      ticket : undefined
     }
   },
   getters: {
@@ -19,7 +21,10 @@ const store = createStore({
     },
     getUsers: state => {
       return state.users;
-    }
+    },
+    getTickets: state =>{
+      return state.tickets;
+    },
   },
   mutations: {
     setToken: value => {
@@ -40,6 +45,9 @@ const store = createStore({
       } else {
         state.users = users
       }
+    },
+    storeTickets: (state, tickets) =>{
+      state.tickets = tickets
     }
   },
   actions: {
@@ -89,6 +97,39 @@ const store = createStore({
         return 'Exito'
       } else throw 'Error en el registro. Intentelo más tarde'
     },
+    async getTicketsList(){
+      var res = await fetch(`${apiBase}ticket/`)
+      if (res.ok) {
+        const ticketsList = await res.json()
+        context.commit('storeTickets', ticketsList)
+      } else throw 'Error del servidor'
+    },
+    async createTicket(){
+      var res = await fetch(`${apiBase}ticket/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(ticket)
+      })
+      if (res.ok) {
+        if (context.getters.getToken) context.dispatch('getTicketsList')
+        return 'Exito'
+      } else throw 'Error en el registro. Intentelo más tarde'
+    },
+    async updateTicket(){
+      var res = await fetch(`${apiBase}ticket/`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(ticket)
+      })
+      if (res.ok) {
+        if (context.getters.getToken) context.dispatch('getTicketsList')
+        return 'Exito'
+      } else throw 'Error en el registro. Intentelo más tarde'
+    }
   }
 })
 

@@ -70,7 +70,7 @@ export default {
         const rol = this.getUser.rol
         switch (rol) {
           case 1:
-            this.$router.push('/admin/userlist')
+            this.$router.push('/admin/userlist/')
             break
           case 2:
             this.$router.push('/empleado')
