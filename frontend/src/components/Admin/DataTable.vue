@@ -62,14 +62,8 @@
                         </div>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                        <Popper>
-                            <button>Trigger element</button>
-                            <template #content>
-                            <div>This is the Popper content</div>
-                            </template>
-                        </Popper>
                         
-                            <button slot="reference" title="Ver mas opciones">
+                            <button title="Ver mas opciones">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-800 hover:text-gray-500 transition-colors duration-200" viewBox="0 0 20 20" fill="currentColor">
                                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd" />
                                 </svg>
@@ -88,8 +82,6 @@
 <script>
 import { computed } from 'vue'
 import { useStore } from 'vuex'
-import Popper from 'vue-popperjs';
-import 'vue-popperjs/dist/vue-popper.css';
 
 export default {
 
