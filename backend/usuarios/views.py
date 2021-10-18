@@ -1,6 +1,6 @@
 from rest_framework import viewsets
-from .models import usuario
-from .serializers import usuario_serializer
+from .models import usuario,empleado
+from .serializers import usuario_serializer,empleadoSerializer
 from django.core.mail import send_mail
 from rest_framework.response import Response
 from django.contrib.auth.hashers import make_password
@@ -83,3 +83,7 @@ class CustomAuthToken(ObtainAuthToken):
             'token': token.key,
             'user_id': user.pk,
         })
+
+class empleado_viewset(viewsets.ModelViewSet):
+    queryset = empleado.objects.all()
+    serializer_class = empleadoSerializer
