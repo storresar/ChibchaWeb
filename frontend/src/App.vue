@@ -27,20 +27,17 @@ html {
 </style>
 <script>
     import {container} from "jenesius-vue-modal";
-
-    //Necesito que la api me pueda devolver el usuario por el token
-    //import { useStore } from "vuex";
+    import { useStore } from "vuex";
 
     export default {
         components: {WidgetContainerModal: container},
         name: "App",
 
-
-
-        //  setup() {
-        //    if (window.localStorage.getItem('token') && window.localStorage.getItem('')) {
-        //      const store = useStore()
-        //      store.dispatch("retrieveUser", wid)
-        //    }
+        setup() {
+          if (window.localStorage.getItem('token') && window.localStorage.getItem('userId')) {
+            const store = useStore()
+            store.dispatch("retrieveUser", window.localStorage.getItem('userId'))
+          }
+        }
     }
 </script>

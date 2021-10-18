@@ -64,6 +64,19 @@
         </select>
       </div>
     </div>
+    <div class="flex flex-wrap -mx-3 mb-6" v-if="datos.rol == 2">
+      <div class="w-full px-3">
+        <label class="block uppercase tracking-wide text-white text-xs font-bold mb-2">
+          
+        </label>
+        <select v-model="datos.nivelEmpleado"
+        class="appearance-none block w-full bg-gray-200 border transition-colors duration-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+          <option value="1">Junior</option>
+          <option value="2">Semi-Junior</option>
+          <option value="3">Senior</option>
+        </select>
+      </div>
+    </div>
     <div class="flex flex-wrap -mx-3 mb-6">
       <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
         <label class="block uppercase tracking-wide text-white text-xs font-bold mb-2" for="grid-first-name">
@@ -126,6 +139,7 @@ export default {
       password: "Plumitas122302",
       confirmPassword: "Plumitas122302",
       rol: "2",
+      nivelEmpleado: "1",
     });
 
     const passwordRef = computed(() => datos.password)
@@ -146,6 +160,7 @@ export default {
     const sendForm = async () => {
       const result = await vldate.value.$validate()
       if (result){
+        var empleado = undefined
         const user = {
           username: datos.username,
           password: datos.password,
@@ -157,6 +172,11 @@ export default {
           intentos_loggeo: 0,
           is_active: true
         }
+        if (datos.rol == 2) {
+          empleado = {
+            nivel_empleado: parseInt(datos.nivelEmpleado)
+          }
+        }
         swal.fire({
           title: 'Espere un momento',
           html: 'estamos registrandolo en el sistema',
@@ -165,7 +185,7 @@ export default {
             swal.showLoading()
           }
         });
-        store.dispatch('createUser', user)
+        store.dispatch('createUser', {user, empleado})
         .then(() => swal.fire({title: 'Exito en registro :3', icon:'success'}))
         .catch(() => swal.fire({title: 'Error en el registo :c', icon:'error'}))
       }

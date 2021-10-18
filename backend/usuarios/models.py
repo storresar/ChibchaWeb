@@ -22,9 +22,7 @@ class usuario(AbstractUser):
 class cliente(models.Model):
     cod_usuario = models.OneToOneField(usuario, on_delete=models.CASCADE, null=False)
     cod_plan = models.PositiveSmallIntegerField(default=0)
-    cod_tipo_tarjeta = models.PositiveSmallIntegerField(default=0)
-    num_tarjeta = models.TextField(max_length=50)
-    cvv = models.TextField(max_length=50)
+    has_plan = models.BooleanField(default=False)
 
 class empleado(models.Model):
     cod_usuario = models.OneToOneField(usuario, on_delete=models.CASCADE, null=False)

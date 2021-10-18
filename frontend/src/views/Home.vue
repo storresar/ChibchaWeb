@@ -15,7 +15,7 @@ import HeaderInfo from "../components/Presentacion/HeaderInfo.vue"
 
 export default {
   components: {
-   Pricing,
+    Pricing,
     Menu,
     About,
     HeaderInfo,

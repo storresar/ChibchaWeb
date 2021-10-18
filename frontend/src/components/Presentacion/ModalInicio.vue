@@ -50,8 +50,8 @@ export default {
   data() {
     return {
       isMenuOpen: false,
-      username: '',
-      password: '',
+      username: 'storresar1',
+      password: 'Santi123',
     };
   },
   computed: {
@@ -68,17 +68,22 @@ export default {
       .then(() => {
         closeModal()
         const rol = this.getUser.rol
+        let ruta = ''
         switch (rol) {
           case 1:
+            ruta = '/admin/userlist/'
             this.$router.push('/admin/userlist/')
             break
           case 2:
+            ruta = '/empleado'
             this.$router.push('/empleado')
             break
           case 3:
-            this.$router.push('/cliente')
+            ruta = '/client'
+            this.$router.push('/client')
             break
         }
+        window.location.href = ruta
       })
     }
   }

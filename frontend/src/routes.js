@@ -6,6 +6,7 @@ import UserList from './views/Admin/UserList.vue'
 import Audit from './views/Admin/Audit.vue'
 import Profile from './views/Admin/Profile.vue'
 import Client from './views/Client.vue'
+import Plan from './views/Cliente/Plan.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 
@@ -39,7 +40,13 @@ const routes = [
   {
     path: '/client',
     component: Client,
-    meta: {authRequired: true, clientRequired : true}
+    meta: {authRequired: true, clientRequired : true},
+    children: [
+      {
+        path: 'plan',
+        component: Plan,
+      }
+    ]
   }
 ]
 

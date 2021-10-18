@@ -9,7 +9,7 @@ const store = createStore({
       user : undefined,
       users : undefined,
       tickets : undefined,
-      ticket : undefined
+      ticket : undefined,
     }
   },
   getters: {
@@ -33,6 +33,7 @@ const store = createStore({
     loginUser: (state, user) => {
       state.user = user
       window.localStorage.setItem('userRol', user.rol)
+      window.localStorage.setItem('userId', user.id)
     },
     logoutUser: (state) => {
       window.localStorage.clear()
@@ -85,26 +86,40 @@ const store = createStore({
       } else throw 'Error del servidor'
     },
     async createUser(context, user) {
+      const {usuario, empleado} = user
       var res = await fetch(`${apiBase}usuarios/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(user)
+        body: JSON.stringify(usuario)
       })
       if (res.ok) {
         if (context.getters.getToken) context.dispatch('getUserList')
+        if (empleado) await context.dispatch('createEmpleado', empleado)
         return 'Exito'
       } else throw 'Error en el registro. Intentelo más tarde'
     },
-    async getTicketsList(){
+    async createEmpleado(context, empleado) {
+      var res = await fetch(`${apiBase}empleados/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(empleado)
+      })
+      if (res.ok) {
+        return 'Exito'
+      } else throw 'Error en el registro. Intentelo más tarde'
+    },
+    async getTicketsList(context){
       var res = await fetch(`${apiBase}ticket/`)
       if (res.ok) {
         const ticketsList = await res.json()
         context.commit('storeTickets', ticketsList)
       } else throw 'Error del servidor'
     },
-    async createTicket(){
+    async createTicket(context, ticket){
       var res = await fetch(`${apiBase}ticket/`, {
         method: 'POST',
         headers: {
@@ -117,7 +132,7 @@ const store = createStore({
         return 'Exito'
       } else throw 'Error en el registro. Intentelo más tarde'
     },
-    async updateTicket(){
+    async updateTicket(context, ticket){
       var res = await fetch(`${apiBase}ticket/`, {
         method: 'PUT',
         headers: {
