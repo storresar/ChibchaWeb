@@ -1,6 +1,5 @@
 <template>
 <div class="w-full max-w-xs">
-  <p>Inicie sesion para adquirir un plan</p>
   <form class="bg-red-1000 bg-opacity-90 shadow-md rounded px-8 pt-6 pb-8 mb-4">
     <div class="mb-4">
       <label class="block text-white text-sm font-bold mb-2" for="username">
@@ -25,14 +24,6 @@
       type="button" @click="login">
         Inicia sesion
       </button>
-     <div class=" flex flex-col-reverse" >
-          <a class="inline-block align-baseline font-bold text-sm text-white hover:text-red-50 transition-colors duration-200" href="#">
-        Olvide mi clave
-      </a>
-      <a class="inline-block align-baseline font-bold text-sm text-white hover:text-red-50 transition-colors duration-200" @click="registro">
-        Registrarse
-      </a>
-     </div>
     </div>
   </form>
   <p class="text-center text-gray-500 text-xs">
@@ -43,8 +34,7 @@
 
 
 <script>
-import { openModal, closeModal } from "jenesius-vue-modal";
-import ModalRegistro from "./ModalRegistro.vue";
+import { closeModal } from "jenesius-vue-modal";
 import { mapActions, mapGetters } from "vuex"
 
 export default {
@@ -59,32 +49,12 @@ export default {
     ...mapGetters(['getUser'])
   },
   methods: {
-    ...mapActions(["retrieveUser", "authenticate"]),
-    registro(){
-      openModal(ModalRegistro)
-      this.isMenuOpen = false
-    },
+    ...mapActions(["authenticate"]),
     login() {
       this.authenticate({username: this.username, password: this.password})
       .then(() => {
+        this.$swal.fire('Inicio de sesión exitoso!')
         closeModal()
-        const rol = this.getUser.rol
-        let ruta = ''
-        switch (rol) {
-          case 1:
-            ruta = '/admin/userlist/'
-            this.$router.push('/admin/userlist/')
-            break
-          case 2:
-            ruta = '/empleado'
-            this.$router.push('/empleado')
-            break
-          case 3:
-            ruta = '/client'
-            this.$router.push('/client')
-            break
-        }
-        window.location.href = ruta
       })
     }
   }

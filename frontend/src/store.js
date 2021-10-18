@@ -10,6 +10,7 @@ const store = createStore({
       users : undefined,
       tickets : undefined,
       ticket : undefined,
+      client : undefined,
     }
   },
   getters: {
@@ -25,6 +26,9 @@ const store = createStore({
     getTickets: state =>{
       return state.tickets;
     },
+    getClient: state =>{
+      return state.client;
+    },
   },
   mutations: {
     setToken: value => {
@@ -34,6 +38,9 @@ const store = createStore({
       state.user = user
       window.localStorage.setItem('userRol', user.rol)
       window.localStorage.setItem('userId', user.id)
+    },
+    loginClient: (state, client) => {
+      state.client = client
     },
     logoutUser: (state) => {
       window.localStorage.clear()
@@ -83,6 +90,13 @@ const store = createStore({
       if (res.ok) {
         const users = await res.json()
         context.commit('storeUsers', users)
+      } else throw 'Error del servidor'
+    },
+    async retrieveClient(context, id) {
+      var res = await fetch(`${apiBase}clientes/?cod_usuario=${id}`)
+      if (res.ok) {
+        const client = await res.json()
+        context.commit('loginClient', client[0])
       } else throw 'Error del servidor'
     },
     async createUser(context, user) {

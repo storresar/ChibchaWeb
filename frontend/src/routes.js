@@ -7,8 +7,11 @@ import Audit from './views/Admin/Audit.vue'
 import Profile from './views/Admin/Profile.vue'
 import Client from './views/Client.vue'
 import Plan from './views/Cliente/Plan.vue'
+import SuccessPayment from './views/Cliente/SuccessPayment.vue'
 import { createRouter, createWebHistory } from 'vue-router'
+import {useModalRouter} from "jenesius-vue-modal";
 
+const SuccessPaymentM = useModalRouter(SuccessPayment)
 
 /** @type {import('vue-router').RouterOptions['routes']} */
 const routes = [
@@ -45,6 +48,10 @@ const routes = [
       {
         path: 'plan',
         component: Plan,
+      },
+      {
+        path: 'success',
+        component: SuccessPaymentM,
       }
     ]
   }
@@ -54,6 +61,8 @@ const router = createRouter({
   history: createWebHistory(),
   routes,
 })
+
+useModalRouter.init(router);
 
 router.beforeEach((to, from, next) => {
   if (to.meta.authRequired) {
