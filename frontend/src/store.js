@@ -87,6 +87,7 @@ const store = createStore({
     },
     async createUser(context, user) {
       const {usuario, empleado} = user
+      console.log(usuario);
       var res = await fetch(`${apiBase}usuarios/`, {
         method: 'POST',
         headers: {
