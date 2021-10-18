@@ -7,6 +7,7 @@ import Audit from './views/Admin/Audit.vue'
 import Profile from './views/Admin/Profile.vue'
 import Client from './views/Client.vue'
 import Plan from './views/Cliente/Plan.vue'
+import Search from './views/Cliente/Search.vue'
 import SuccessPayment from './views/Cliente/SuccessPayment.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import {useModalRouter} from "jenesius-vue-modal";
@@ -52,6 +53,10 @@ const routes = [
       {
         path: 'success',
         component: SuccessPaymentM,
+      },
+      {
+        path: 'search',
+        component: Search,
       }
     ]
   }
