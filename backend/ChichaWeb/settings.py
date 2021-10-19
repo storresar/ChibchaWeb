@@ -53,7 +53,8 @@ INSTALLED_APPS = [
     'usuarios',
     'auditoria',
     'tickets',
-    'pagos'
+    'pagos',
+    'dominios'
 ]
 
 REST_FRAMEWORK = {
