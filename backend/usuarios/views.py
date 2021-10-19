@@ -94,4 +94,8 @@ class cliente_viewset(viewsets.ModelViewSet):
 
     def get_queryset(self):
         cod_usuario = self.request.query_params.get('cod_usuario')
-        return cliente.objects.filter(cod_usuario=cod_usuario)
+        print(cod_usuario)
+        if(cod_usuario == None):
+            return cliente.objects.all()
+        else:
+            return cliente.objects.filter(cod_usuario=cod_usuario)

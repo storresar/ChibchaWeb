@@ -52,7 +52,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'usuarios',
     'auditoria',
-    'tickets'
+    'tickets',
+    'pagos'
 ]
 
 REST_FRAMEWORK = {

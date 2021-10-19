@@ -1,7 +1,6 @@
 from rest_framework.routers import DefaultRouter
 from .views import UsuarioViewSet, CustomAuthToken,empleado_viewset,cliente_viewset
-from django.urls import include
-from django.conf.urls import url
+from django.conf.urls import include,url
 from django.urls import path
 
 
