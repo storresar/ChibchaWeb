@@ -21,5 +21,6 @@ urlpatterns = [
     path('api/',include('usuarios.urls')),
     path('api/', include('auditoria.urls')),
     path('api/',include('tickets.urls')),
-    path('api/',include('pagos.urls'))
+    path('api/',include('pagos.urls')),
+    path('api/',include('dominios.urls'))
 ]
