@@ -49,7 +49,6 @@ const store = createStore({
     storeUsers: (state, users) => {
       if (state.user) {
         state.users = users.filter(obj => obj.id != state.user.id)
-        console.log(state.users);
       } else {
         state.users = users
       }
@@ -101,7 +100,6 @@ const store = createStore({
     },
     async createUser(context, user) {
       const {usuario, empleado} = user
-      console.log(usuario);
       var res = await fetch(`${apiBase}usuarios/`, {
         method: 'POST',
         headers: {
@@ -111,7 +109,18 @@ const store = createStore({
       })
       if (res.ok) {
         if (context.getters.getToken) context.dispatch('getUserList')
+        const {id} = await res.json()
+        empleado.cod_usuario = id
         if (empleado) await context.dispatch('createEmpleado', empleado)
+        return 'Exito'
+      } else throw 'Error en el registro. Intentelo más tarde'
+    },
+    async deleteUser(context, userID) {
+      var res = await fetch(`${apiBase}usuarios/${userID}/`, {
+        method: 'DELETE',
+      })
+      if (res.ok) {
+        if (context.getters.getToken) context.dispatch('getUserList')
         return 'Exito'
       } else throw 'Error en el registro. Intentelo más tarde'
     },
@@ -159,7 +168,8 @@ const store = createStore({
         if (context.getters.getToken) context.dispatch('getTicketsList')
         return 'Exito'
       } else throw 'Error en el registro. Intentelo más tarde'
-    }
+    },
+    
   }
 })
 

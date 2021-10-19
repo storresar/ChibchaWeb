@@ -116,8 +116,10 @@ import { required, email, sameAs, minLength, maxLength, alphaNum } from "@vuelid
 import { useStore } from 'vuex';
 
 export default {
-  setup() {
-
+  props: {
+      user: Object
+  },
+  setup(props) {
     const swal = inject('$swal')
     const store = useStore()
 
@@ -132,13 +134,13 @@ export default {
     }
 
     const datos = reactive({
-      firstName: "Laura",
-      lastName: "Chiquillo",
-      username: "Mividalinda",
-      email: "lchiquillo@unbosque.edu.co",
-      password: "Plumitas122302",
-      confirmPassword: "Plumitas122302",
-      rol: "2",
+      firstName: props.user.first_name,
+      lastName: props.user.last_name,
+      username: props.user.username,
+      email: props.user.email,
+      password: "",
+      confirmPassword: "",
+      rol: props.user.rol,
       nivelEmpleado: "1",
     });
 
@@ -161,6 +163,7 @@ export default {
       const result = await vldate.value.$validate()
       if (result){
         var empleado = undefined
+        //var cliente = undefined
         const user = {
           username: datos.username,
           password: datos.password,
@@ -179,15 +182,15 @@ export default {
         }
         swal.fire({
           title: 'Espere un momento',
-          html: 'estamos registrandolo en el sistema',
+          html: 'Estamos actualizando los datos',
           allowOutsideClick: false,
           didOpen: () => {
             swal.showLoading()
           }
         });
         store.dispatch('createUser', {usuario: user, empleado})
-        .then(() => swal.fire({title: 'Exito en registro :3', icon:'success'}))
-        .catch(() => swal.fire({title: 'Error en el registo :c', icon:'error'}))
+        .then(() => swal.fire({title: 'Exito en la modificacion :3', icon:'success'}))
+        .catch(() => swal.fire({title: 'Error en la modificacion :c', icon:'error'}))
       }
       
     }
@@ -197,4 +200,3 @@ export default {
 };
 
 </script>
-

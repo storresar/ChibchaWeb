@@ -62,12 +62,25 @@
                         </div>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                        
-                        <button title="Ver mas opciones">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-800 hover:text-gray-500 transition-colors duration-200" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd" />
-                            </svg>
-                        </button>
+                          <Popper placement="left">
+                            <button>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-800 hover:text-gray-500 transition-colors duration-200" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd" />
+                                </svg>
+                            </button>
+                            <template #content>
+                                <div class=" flex flex-col gap-2 rounded-md py-2 px-4">
+                                    <button @click="modifyUser(user)"
+                                    class="px-4 py-2 text-white transition duration-200 rounded shadow-md bg-red-50 hover:bg-deep-purple-accent-100 hover:text-black focus:shadow-outline focus:outline-none">
+                                        Modificar
+                                    </button>
+                                    <button @click="deleteUser(user.id)"
+                                    class="px-4 py-2 text-white transition duration-200 rounded shadow-md bg-red-50 hover:bg-deep-purple-accent-100 hover:text-black focus:shadow-outline focus:outline-none">
+                                        Eliminar
+                                    </button>
+                                </div>
+                            </template>
+                        </Popper>
                         
                     </td>
                     </tr>                        
@@ -80,17 +93,39 @@
 </template>
 
 <script>
-import { computed } from 'vue'
+import { computed, inject } from 'vue'
 import { useStore } from 'vuex'
+import { openModal } from 'jenesius-vue-modal'
+import ModalModificar from './ModalModificar.vue'
 
 export default {
 
     async setup() {
+        const swal = inject('$swal')
         const store = useStore()
         await store.dispatch('getUserList')
         const users = computed(() => store.getters.getUsers)
+
+        const deleteUser = (userId => {
+            swal.fire({
+            title: 'Espere un momento',
+            html: 'Estamos eliminando el usuario :3',
+            allowOutsideClick: false,
+            didOpen: () => {
+                swal.showLoading()
+                }
+            });
+            store.dispatch('deleteUser', userId)
+            .then(() => swal.fire({title: 'Usuario eliminado', icon:'success'}))
+            .catch(() => swal.fire({title: 'Error en el sistema', icon:'error'}))
+        })
+
+        const modifyUser = (user => {
+            openModal(ModalModificar, {user})
+
+        })
         return {
-            users
+            users, deleteUser, modifyUser
         }
 
     },

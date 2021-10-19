@@ -7,15 +7,13 @@
 </template>
 
 <script>
-import { onBeforeUnmount } from 'vue'
-import { useRouter  } from 'vue-router'
+import { onUnmounted } from 'vue'
 export default {
     setup() {
-        const router = useRouter()
         
-
-        onBeforeUnmount(() => {
-            router.push('/client')
+        onUnmounted(() => {
+            alert(window.location.href.replace('/success', ''));
+            window.location.href = window.location.href.replace('/success', '')
         })
     },
 }
