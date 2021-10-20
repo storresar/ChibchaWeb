@@ -2,6 +2,16 @@ import { createStore } from 'vuex'
 
 const apiBase = 'http://127.0.0.1:8000/api/'
 
+function parseToFormData(data) {
+  const formData = new FormData();
+
+  for(const name in data) {
+    formData.append(name, data[name]);
+  }
+  return formData
+}
+
+
 // Create a new store instance.
 const store = createStore({
   state () {
@@ -11,6 +21,7 @@ const store = createStore({
       tickets : undefined,
       ticket : undefined,
       client : undefined,
+      employee : undefined,
     }
   },
   getters: {
@@ -29,6 +40,9 @@ const store = createStore({
     getClient: state =>{
       return state.client;
     },
+    getEmployee: state =>{
+      return state.employee;
+    },
   },
   mutations: {
     setToken: value => {
@@ -41,6 +55,9 @@ const store = createStore({
     },
     loginClient: (state, client) => {
       state.client = client
+    },
+    loginEmployee: (state, employee) => {
+      state.employee = employee
     },
     logoutUser: (state) => {
       window.localStorage.clear()
@@ -55,6 +72,9 @@ const store = createStore({
     },
     storeTickets: (state, tickets) =>{
       state.tickets = tickets
+    },
+    storeEmployee: (state, employee) => {
+      state.employee = employee
     }
   },
   actions: {
@@ -96,6 +116,13 @@ const store = createStore({
       if (res.ok) {
         const client = await res.json()
         context.commit('loginClient', client[0])
+      } else throw 'Error del servidor'
+    },
+    async retrieveEmployee(context, id) {
+      var res = await fetch(`${apiBase}empleados/?cod_usuario=${id}`)
+      if (res.ok) {
+        const employee = await res.json()
+        context.commit('loginEmployee', employee[0])
       } else throw 'Error del servidor'
     },
     async createUser(context, user) {
@@ -160,7 +187,7 @@ const store = createStore({
       var res = await fetch(`${apiBase}ticket/`, {
         method: 'PUT',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'multipart/form-data',
         },
         body: JSON.stringify(ticket)
       })
@@ -169,9 +196,30 @@ const store = createStore({
         return 'Exito'
       } else throw 'Error en el registro. Intentelo más tarde'
     },
-    
+    async updateUser(context, data) {
+      const {user, employee} = data
+      const dataForm = parseToFormData(user)
+      dataForm.delete('date_joined')
+      var res = await fetch(`${apiBase}usuarios/${user.id}/`, {
+        method: 'PATCH',
+        body: dataForm
+      })
+      if (res.ok) {
+        if (employee) await context.dispatch('updateEmployee', employee)
+        await context.dispatch('getUserList')
+        return 'Exito'
+      } else throw 'Error al edutar el usuario. Intentelo más tarde'
+    },
+    async updateEmployee(context, employee) {
+      console.log(employee);
+      var res = await fetch(`${apiBase}empleados/${employee.id}/`, {
+        method: 'PATCH',
+        body: parseToFormData(employee)
+      })
+      if (res.ok) {
+        return 'Exito'
+      } else throw 'Error al editar el empleado. Intentelo más tarde'
+    },
   }
 })
-
-
 export default store;

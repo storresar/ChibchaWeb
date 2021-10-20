@@ -121,7 +121,12 @@ export default {
         })
 
         const modifyUser = (user => {
-            openModal(ModalModificar, {user})
+            if (user.rol === 2) {
+                store.dispatch('retrieveEmployee', user.id)
+                .then(() => {
+                    openModal(ModalModificar, {user, employee: store.getters.getEmployee})
+                })
+            } else openModal(ModalModificar, {user})
 
         })
         return {
