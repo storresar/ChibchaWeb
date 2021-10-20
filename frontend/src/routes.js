@@ -4,13 +4,15 @@ import Admin from './views/Admin.vue'
 import MainStats from './views/Admin/MainStats.vue'
 import UserList from './views/Admin/UserList.vue'
 import Audit from './views/Admin/Audit.vue'
-import Profile from './views/Admin/Profile.vue'
 import Client from './views/Client.vue'
 import Plan from './views/Cliente/Plan.vue'
 import Search from './views/Cliente/Search.vue'
 import SuccessPayment from './views/Cliente/SuccessPayment.vue'
+import Profile from './views/Cliente/Profile.vue'
+
 import { createRouter, createWebHistory } from 'vue-router'
 import {useModalRouter} from "jenesius-vue-modal";
+
 
 const SuccessPaymentM = useModalRouter(SuccessPayment)
 
@@ -38,7 +40,7 @@ const routes = [
       {
         path: 'profile',
         component: Profile,
-      }
+      },
     ]
   },
   {
@@ -57,7 +59,11 @@ const routes = [
       {
         path: 'search',
         component: Search,
-      }
+      },
+      {
+        path: 'profile',
+        component: Profile,
+      },
     ]
   }
 ]

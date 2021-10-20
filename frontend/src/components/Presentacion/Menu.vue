@@ -1,7 +1,7 @@
 <template>
   <div
     class="sticky top-0 left-0 z-10 px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8
-    rounded-md"
+    rounded-md" style="background-color:rgba(33, 33, 33, .95)"
   >
     <div class="flex items-center justify-between">
       <a

@@ -51,7 +51,7 @@
         <p v-show="vldate.email.$error" class="text-red-50 text-xs italic">Ingrese un correo valido</p>
       </div>
     </div>
-    <div class="flex flex-wrap -mx-3 mb-6">
+    <div v-if="datos.rol !== 3" class="flex flex-wrap -mx-3 mb-6">
       <div class="w-full px-3">
         <label class="block uppercase tracking-wide text-white text-xs font-bold mb-2">
           ROL
@@ -69,7 +69,7 @@
         <label class="block uppercase tracking-wide text-white text-xs font-bold mb-2">
           NIVEL EMPLEADO
         </label>
-        <select v-model="datos.nivelEmpleado"
+        <select v-model="employe.nivelEmpleado"
         class="appearance-none block w-full bg-gray-200 border transition-colors duration-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
           <option value="1">Junior</option>
           <option value="2">Semi-Junior</option>
@@ -98,6 +98,8 @@
         :class="vldate.confirmPassword.$error ? 'border-red-500' : 'border-gray-200'"
         class="appearance-none block w-full bg-gray-200 border transition-colors duration-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
         id="grid-confirm-password" type="password" placeholder="******">
+        <p v-show="vldate.confirmPassword.$error" class="text-red-50 text-xs italic">La claves no coinciden</p>
+
       </div>
     </div>
     <div class="flex flex-wrap -mx-3 mb-6 place-items-center">
@@ -112,12 +114,13 @@
 <script>
 import { reactive, computed, inject } from "vue";
 import useVuelidate from "@vuelidate/core";
-import { required, email, sameAs, minLength, maxLength, alphaNum } from "@vuelidate/validators";
+import { required, email, sameAs, minLength, maxLength, alphaNum} from "@vuelidate/validators";
 import { useStore } from 'vuex';
 
 export default {
   props: {
-      user: Object
+      user: Object,
+      employee: Object,
   },
   setup(props) {
     const swal = inject('$swal')
@@ -134,6 +137,7 @@ export default {
     }
 
     const datos = reactive({
+      id: props.user.id,
       firstName: props.user.first_name,
       lastName: props.user.last_name,
       username: props.user.username,
@@ -141,8 +145,13 @@ export default {
       password: "",
       confirmPassword: "",
       rol: props.user.rol,
-      nivelEmpleado: "1",
     });
+
+    var employe = reactive({
+      id: props.employee ? props.employee.id : '' ,
+      nivelEmpleado : props.employee ? props.employee.nivel_empleado : '',
+      codUsuario: props.employee ? props.employee.cod_usuario : ''
+    })
 
     const passwordRef = computed(() => datos.password)
 
@@ -151,8 +160,8 @@ export default {
       lastName: { required, tildeMatch },
       username: { required, alphaNum, minLength: minLength(8), maxLength: maxLength(12) },
       email: { required, email: email },
-      password: { required, minLength: minLength(8), hasNum, alphaNum},
-      confirmPassword: { required, sameAsPassword: sameAs(passwordRef) }
+      password: {minLength: minLength(8),hasNum, alphaNum },
+      confirmPassword: {sameAsPassword: sameAs(passwordRef) }
     };
 
     const vldate = useVuelidate(rules, datos)
@@ -162,22 +171,24 @@ export default {
     const sendForm = async () => {
       const result = await vldate.value.$validate()
       if (result){
-        var empleado = undefined
-        //var cliente = undefined
+        var empleado = undefined;
         const user = {
+          id: datos.id,
           username: datos.username,
-          password: datos.password,
           first_name: datos.firstName,
           last_name: datos.lastName,
           email: datos.email,
           rol: parseInt(datos.rol),
           date_joined: new Date(),
           intentos_loggeo: 0,
-          is_active: true
         }
+        console.log(datos.rol);
+        if (datos.password) user.password = datos.password
         if (datos.rol == 2) {
           empleado = {
-            nivel_empleado: parseInt(datos.nivelEmpleado)
+            id: parseInt(employe.id),
+            nivel_empleado: parseInt(employe.nivelEmpleado),
+            cod_usuario: parseInt(employe.codUsuario)
           }
         }
         swal.fire({
@@ -188,14 +199,17 @@ export default {
             swal.showLoading()
           }
         });
-        store.dispatch('createUser', {usuario: user, empleado})
+        store.dispatch('updateUser', {user, employee: empleado})
         .then(() => swal.fire({title: 'Exito en la modificacion :3', icon:'success'}))
-        .catch(() => swal.fire({title: 'Error en la modificacion :c', icon:'error'}))
+        .catch(error => {
+          console.error(error)
+          swal.fire({title: 'Error en la modificacion :c', icon:'error'})
+        })
       }
       
     }
 
-    return { datos, vldate, sendForm }
+    return { datos,employe, vldate, sendForm }
   }
 };
 

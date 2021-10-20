@@ -88,6 +88,14 @@ class empleado_viewset(viewsets.ModelViewSet):
     queryset = empleado.objects.all()
     serializer_class = empleadoSerializer
 
+    def get_queryset(self):
+        cod_usuario = self.request.query_params.get('cod_usuario')
+        print(cod_usuario)
+        if(cod_usuario == None):
+            return empleado.objects.all()
+        else:
+            return empleado.objects.filter(cod_usuario=cod_usuario)
+
 class cliente_viewset(viewsets.ModelViewSet):
     queryset = cliente.objects.all()
     serializer_class = cliente_Serializer
