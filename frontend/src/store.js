@@ -140,7 +140,7 @@ const store = createStore({
       } else throw 'Error del servidor'
     },
     async createUser(context, user) {
-      const {usuario, empleado} = user
+      const {usuario, empleado, cliente} = user
       var res = await fetch(`${apiBase}usuarios/`, {
         method: 'POST',
         headers: {
@@ -150,10 +150,13 @@ const store = createStore({
       })
       if (res.ok) {
         if (context.getters.getToken) context.dispatch('getUserList')
+        const {id} = await res.json()
         if (empleado){
-          const {id} = await res.json()
           empleado.cod_usuario = id
           await context.dispatch('createEmpleado', empleado)
+        } else if (cliente) {
+          cliente.cod_usuario = id
+          await context.dispatch('createCliente', cliente)
         }
         return 'Exito'
       } else throw 'Error en el registro. Intentelo más tarde'
@@ -174,6 +177,18 @@ const store = createStore({
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(empleado)
+      })
+      if (res.ok) {
+        return 'Exito'
+      } else throw 'Error en el registro. Intentelo más tarde'
+    },
+    async createCliente(context, cliente) {
+      var res = await fetch(`${apiBase}clientes/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(cliente)
       })
       if (res.ok) {
         return 'Exito'
@@ -225,7 +240,7 @@ const store = createStore({
         if (user.id == context.getters.getUser.id) await context.dispatch('retrieveUser', user.id)
         await context.dispatch('getUserList')
         return 'Exito'
-      } else throw 'Error al edutar el usuario. Intentelo más tarde'
+      } else throw 'Error al editar el usuario. Intentelo más tarde'
     },
     async updateEmployee(context, employee) {
       console.log(employee);
@@ -236,6 +251,16 @@ const store = createStore({
       if (res.ok) {
         return 'Exito'
       } else throw 'Error al editar el empleado. Intentelo más tarde'
+    },
+    async suscribirse(context, data) {
+      console.log(data);
+      var res = await fetch(`${apiBase}facturacion/`, {
+        method: 'POST',
+        body: parseToFormData(data)
+      })
+      if (res.ok) {
+        return 'Exito'
+      } else throw 'Error al registrar el pago'
     },
   }
 })

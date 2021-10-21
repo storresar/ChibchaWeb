@@ -11,10 +11,8 @@
         class="inline-flex items-center"
       >
         <img src="chibchaoro.png" alt="" class="w-16 md:w-16 m-auto" >
-        <span
-          class="ml-2 text-xl font-bold tracking-wide text-white uppercase"
-          >ChibchaWeb</span
-        >
+        <span v-if="!user" class="ml-2 text-xl font-bold tracking-wide text-white uppercase">ChibchaWeb</span>
+        <span v-else class="ml-2 text-xl font-bold tracking-wide text-white uppercase">Bienvenido {{user.username}}</span>
       </a>
       <ul class="flex items-center hidden space-x-8 lg:flex">
         
@@ -47,6 +45,7 @@
         </li>
         <li>
           <a
+            v-if="!user"
             @click="abrirModal"
             class="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-red-50 hover:bg-deep-purple-accent-100 hover:text-black focus:shadow-outline focus:outline-none"
             aria-label="Sign up"
@@ -54,6 +53,24 @@
           >
             Inicia Sesión
           </a>
+          <div v-else class="flex justify gap-4">
+            <a
+            @click="goToDashBoard"
+            class="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-red-50 hover:bg-deep-purple-accent-100 hover:text-black focus:shadow-outline focus:outline-none"
+            aria-label="Sign up"
+            title="Ir al dashboard"
+            >
+              Dashboard
+            </a>
+            <a
+            @click="logout"
+            class="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-red-50 hover:bg-deep-purple-accent-100 hover:text-black focus:shadow-outline focus:outline-none"
+            aria-label="Sign up"
+            title="Ir al dashboard"
+            >
+              Cerrar Sesión
+            </a>
+          </div>
         </li>
       </ul>
       <div class="lg:hidden">
@@ -88,10 +105,8 @@
                   class="inline-flex items-center"
                 >
                   <img src="chibchaoro.png" alt="" class="w-16 md:w-16 m-auto" >
-                  <span
-                    class="ml-2 text-xl font-bold tracking-wide text-white uppercase"
-                    >CHIBCHA WEB</span
-                  >
+                  <span v-if="!user" class="ml-2 text-xl font-bold tracking-wide text-white uppercase">ChibchaWeb</span>
+                  <span v-else class="ml-2 text-xl font-bold tracking-wide text-white uppercase">Bienvenido {{user.username}}</span>
                 </a>
               </div>
               <div>
@@ -144,14 +159,32 @@
                 </li>
                 <li>
                   <a
-                    @click="abrirModal"
-                  
-                    class="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-red-50 hover:bg-red-50 focus:shadow-outline focus:outline-none"
-                    aria-label="Inicia Sesion"
-                    title="Inicia Sesion"
+                  v-if="!user"
+                  @click="abrirModal"
+                  class="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-red-50 hover:bg-deep-purple-accent-100 hover:text-black focus:shadow-outline focus:outline-none"
+                  aria-label="Sign up"
+                  title="Sign up"
+                >
+                  Inicia Sesión
+                </a>
+                <div v-else class="flex flex-col justify gap-4 px-10">
+                  <a
+                  @click="goToDashBoard"
+                  class="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-red-50 hover:bg-deep-purple-accent-100 hover:text-black focus:shadow-outline focus:outline-none"
+                  aria-label="Sign up"
+                  title="Ir al dashboard"
                   >
-                    Iniciar Sesion
+                    Dashboard
                   </a>
+                  <a
+                  @click="logout"
+                  class="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-red-50 hover:bg-deep-purple-accent-100 hover:text-black focus:shadow-outline focus:outline-none"
+                  aria-label="Sign up"
+                  title="Ir al dashboard"
+                  >
+                    Cerrar Sesión
+                  </a>
+                </div>
                 </li>
               </ul>
             </nav>
@@ -165,17 +198,48 @@
 <script>
 import {openModal} from "jenesius-vue-modal";
 import ModalInicio from "./ModalInicio.vue"
+import { useStore } from 'vuex';
+import { computed } from 'vue'
+
 export default {
   data() {
+    const store = useStore()
+    const user = computed(() => store.getters.getUser)
+    const goToDashBoard = () => {
+      const rol = user.value.rol
+      let ruta = ''
+      switch (rol) {
+        case 1:
+          ruta = '/admin/userlist/'
+          break
+        case 2:
+          ruta = '/employee/profile'
+          break
+        case 3:
+          ruta = '/client'
+          break
+      }
+      this.$router.push(ruta)
+      window.location.href = ruta
+    }
+
+    const logout = () => {
+      store.commit('logoutUser')
+      this.$router.push('')
+    }
+
     return {
+      user,
       isMenuOpen: false,
+      goToDashBoard,
+      logout
     };
   },
   methods: {
     abrirModal(){
       openModal (ModalInicio)
       this.isMenuOpen = false
-    }
+    },
   }
 };
 </script>

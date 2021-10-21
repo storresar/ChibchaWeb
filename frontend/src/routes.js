@@ -14,8 +14,6 @@ import { createRouter, createWebHistory } from 'vue-router'
 import {useModalRouter} from "jenesius-vue-modal";
 
 
-const SuccessPaymentM = useModalRouter(SuccessPayment)
-
 /** @type {import('vue-router').RouterOptions['routes']} */
 const routes = [
   { path: '/', component: Home, meta: { title: 'Home' } },
@@ -54,7 +52,7 @@ const routes = [
       },
       {
         path: 'success',
-        component: SuccessPaymentM,
+        component: SuccessPayment,
       },
       {
         path: 'search',

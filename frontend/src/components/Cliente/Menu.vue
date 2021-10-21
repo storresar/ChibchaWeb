@@ -72,12 +72,20 @@
                   <p>Mis dominios</p>
                   </router-link>
                 </li>
-                <li>
-                  <button @click="logout"
-                  class="ml-2 inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-red-50 hover:bg-purple-accent-700">
-                    Cerrar sesión
-                  </button>
-                </li>
+                <div class="flex flex-col gap-4 px-4">
+                  <li>
+                    <button @click="logout"
+                    class="ml-2 inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-red-50 hover:bg-purple-accent-700">
+                      Cerrar sesión
+                    </button>
+                  </li>
+                  <li>
+                    <router-link to="/"
+                    class="ml-2 text-center inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-red-50 hover:bg-purple-accent-700">
+                      Ir a pagina principal
+                    </router-link>
+                  </li>
+                </div>
               </ul>
             </nav>
           </div>
@@ -140,6 +148,12 @@
           class="ml-2 inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-red-50 hover:bg-purple-accent-700">
             Cerrar sesión
           </button>
+        </li>
+        <li>
+          <router-link to="/"
+          class="ml-2 text-center inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-red-50 hover:bg-purple-accent-700">
+            Ir a pagina principal
+          </router-link>
         </li>
       </ul>
     </div>

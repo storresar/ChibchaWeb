@@ -72,17 +72,15 @@ export default {
         switch (rol) {
           case 1:
             ruta = '/admin/userlist/'
-            this.$router.push('/admin/userlist/')
             break
           case 2:
             ruta = '/empleado'
-            this.$router.push('/empleado')
             break
           case 3:
             ruta = '/client'
-            this.$router.push('/client')
             break
         }
+        this.$router.push(ruta)
         window.location.href = ruta
       })
     }

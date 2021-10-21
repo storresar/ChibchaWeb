@@ -179,15 +179,13 @@ export default {
             .catch(() => swal.fire({title: 'Error en el sistema', icon:'error'}))
         })
 
-        const modifyUser = (user => {
+        const modifyUser = async user => {
             if (user.rol === 2) {
-                store.dispatch('retrieveEmployee', user.id)
-                .then(() => {
-                    openModal(ModalModificar, {user, employee: store.getters.getEmployee})
-                })
+                await store.dispatch('retrieveEmployee', user.id)
+                openModal(ModalModificar, {user, employee: store.getters.getEmployee})
             } else openModal(ModalModificar, {user})
 
-        })
+        }
         return {
             users, deleteUser, modifyUser,
             paginated, backPage, fowardPage,

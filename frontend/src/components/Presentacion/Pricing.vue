@@ -41,7 +41,7 @@
           </div>
         </div>
         <div>
-          <Checkout :priceMonth="chibchaPlataMes" :priceYear="chibchaPlataAnual"/>
+          <Checkout :priceMonth="chibchaPlataMes" :priceYear="chibchaPlataAnual" id="1"/>
         </div>
       </div>
       <div class="relative flex flex-col justify-between p-8 transition-shadow duration-300 bg-white border rounded shadow-sm sm:items-center hover:shadow border-red-50">
@@ -67,7 +67,7 @@
           </div>
         </div>
         <div>
-          <Checkout :priceMonth="chibchaOroMes" :priceYear="chibchaOroAnual"/>
+          <Checkout :priceMonth="chibchaOroMes" :priceYear="chibchaOroAnual" id="2"/>
         </div>
       </div>
       <div class="flex flex-col justify-between p-8 transition-shadow duration-300 bg-white border rounded shadow-sm sm:items-center hover:shadow">
@@ -90,7 +90,7 @@
           </div>
         </div>
         <div>
-         <Checkout :priceMonth="chibchaPlataMes" :priceYear="chibchaPlataAnual"/>
+         <Checkout :priceMonth="chibchaPlatinoMes" :priceYear="chibchaPlatinoAnual" id="3"/>
         </div>
       </div>
     </div>

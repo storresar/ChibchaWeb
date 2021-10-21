@@ -161,6 +161,7 @@ export default {
       const result = await vldate.value.$validate()
       if (result){
         var empleado = undefined
+        var cliente = undefined
         const user = {
           username: datos.username,
           password: datos.password,
@@ -176,6 +177,10 @@ export default {
           empleado = {
             nivel_empleado: parseInt(datos.nivelEmpleado)
           }
+        } else if (datos.rol == 3) {
+          cliente = {
+            has_plan : false
+          }
         }
         swal.fire({
           title: 'Espere un momento',
@@ -185,7 +190,7 @@ export default {
             swal.showLoading()
           }
         });
-        store.dispatch('createUser', {usuario: user, empleado})
+        store.dispatch('createUser', {usuario: user, empleado, cliente})
         .then(() => swal.fire({title: 'Exito en registro :3', icon:'success'}))
         .catch(error => {
           swal.fire({title: 'Error en el registo :c', icon:'error'})

@@ -70,6 +70,7 @@ export default {
   props: {
     priceMonth: String,
     priceYear: String,
+    id: String,
   },
   components: {
     StripeCheckout,
@@ -104,12 +105,13 @@ export default {
     submitMonth() {
       if (this.getUser) {
         if (this.getUser.rol == 3) {
+          localStorage.setItem('SuscriptionId', parseInt(this.id)*2)
           this.retrieveClient(this.getUser.id)
           .then(() => {
             if (!this.getClient.has_plan) {
               this.lineItems = this.lineItemsM;
               this.$refs.checkoutRef.redirectToCheckout();
-            } else window.location.href = '/client'
+            } else this.$swal.fire('Error', 'No puede adquirir otro plan. Usted ya esta suscrito a uno ', 'warning')
           }).catch(() => this.$swal.fire('Error', 'Error de autenticacion del cliente', 'error'))
           
         } else this.$swal.fire('Error', 'Debe estar registrado como cliente para adquirir un dominio', 'error')
@@ -120,8 +122,14 @@ export default {
     submitYear() {
       if (this.getUser) {
         if (this.getUser.rol == 3) {
-            this.lineItems = this.lineItemsY;
-            this.$refs.checkoutRef.redirectToCheckout();
+          localStorage.setItem('SuscriptionId', (parseInt(this.id)*2)-1)
+          this.retrieveClient(this.getUser.id)
+          .then(() => {
+            if (!this.getClient.has_plan) {
+              this.lineItems = this.lineItemsY;
+              this.$refs.checkoutRef.redirectToCheckout();
+            } else this.$swal.fire('Error', 'No puede adquirir otro plan. Usted ya esta suscrito a uno ', 'warning')
+          })
         } else this.$swal.fire('Error', 'Debe estar registrado como cliente para adquirir un dominio', 'error')
       } else {
         openModal(ModalRegistroCompra)
