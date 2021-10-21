@@ -21,7 +21,6 @@ class usuario(AbstractUser):
 
 class cliente(models.Model):
     cod_usuario = models.OneToOneField(usuario, on_delete=models.CASCADE, null=False)
-    cod_plan = models.PositiveSmallIntegerField(default=0)
     has_plan = models.BooleanField(default=False)
 
 class empleado(models.Model):
