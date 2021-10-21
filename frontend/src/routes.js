@@ -8,7 +8,7 @@ import Client from './views/Client.vue'
 import Plan from './views/Cliente/Plan.vue'
 import Search from './views/Cliente/Search.vue'
 import SuccessPayment from './views/Cliente/SuccessPayment.vue'
-import Profile from './views/Cliente/Profile.vue'
+import Profile from './views/Profile.vue'
 
 import { createRouter, createWebHistory } from 'vue-router'
 import {useModalRouter} from "jenesius-vue-modal";

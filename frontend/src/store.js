@@ -22,6 +22,7 @@ const store = createStore({
       ticket : undefined,
       client : undefined,
       employee : undefined,
+      audit : undefined,
     }
   },
   getters: {
@@ -42,6 +43,9 @@ const store = createStore({
     },
     getEmployee: state =>{
       return state.employee;
+    },
+    getAudit: state =>{
+      return state.audit;
     },
   },
   mutations: {
@@ -75,6 +79,9 @@ const store = createStore({
     },
     storeEmployee: (state, employee) => {
       state.employee = employee
+    },
+    storeAudit: (state, audit) => {
+      state.audit = audit
     }
   },
   actions: {
@@ -111,6 +118,13 @@ const store = createStore({
         context.commit('storeUsers', users)
       } else throw 'Error del servidor'
     },
+    async getAudit(context) {
+      var res = await fetch(`${apiBase}auditoria/`)
+      if (res.ok) {
+        const audit = await res.json()
+        context.commit('storeAudit', audit)
+      } else throw 'Error del servidor'
+    },
     async retrieveClient(context, id) {
       var res = await fetch(`${apiBase}clientes/?cod_usuario=${id}`)
       if (res.ok) {
@@ -136,9 +150,11 @@ const store = createStore({
       })
       if (res.ok) {
         if (context.getters.getToken) context.dispatch('getUserList')
-        const {id} = await res.json()
-        empleado.cod_usuario = id
-        if (empleado) await context.dispatch('createEmpleado', empleado)
+        if (empleado){
+          const {id} = await res.json()
+          empleado.cod_usuario = id
+          await context.dispatch('createEmpleado', empleado)
+        }
         return 'Exito'
       } else throw 'Error en el registro. Intentelo más tarde'
     },
@@ -206,6 +222,7 @@ const store = createStore({
       })
       if (res.ok) {
         if (employee) await context.dispatch('updateEmployee', employee)
+        if (user.id == context.getters.getUser.id) await context.dispatch('retrieveUser', user.id)
         await context.dispatch('getUserList')
         return 'Exito'
       } else throw 'Error al edutar el usuario. Intentelo más tarde'

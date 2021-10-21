@@ -187,7 +187,10 @@ export default {
         });
         store.dispatch('createUser', {usuario: user, empleado})
         .then(() => swal.fire({title: 'Exito en registro :3', icon:'success'}))
-        .catch(() => swal.fire({title: 'Error en el registo :c', icon:'error'}))
+        .catch(error => {
+          swal.fire({title: 'Error en el registo :c', icon:'error'})
+          console.error(error);
+        })
       }
       
     }

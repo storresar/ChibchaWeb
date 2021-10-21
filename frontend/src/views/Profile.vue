@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="font-sans antialiased text-gray-900 leading-normal tracking-wider bg-cover" style="background-image:url('https://source.unsplash.com/1L71sPT5XKc');">
+        <div class="font-sans antialiased text-gray-900 leading-normal tracking-wider bg-cover" >
         <div class="max-w-4xl flex items-center h-auto lg:h-screen flex-wrap mx-auto my-32 lg:my-0">
             
             <!--Main Col-->
@@ -28,7 +28,6 @@
                 </div>
 
             </div>
-            
             <!--Img Col-->
             <div class="w-full lg:w-2/5">
                 <!-- Big profile image for side bar (desktop) -->
@@ -44,7 +43,7 @@
 
 import { useStore } from 'vuex';
 import { openModal } from 'jenesius-vue-modal'
-import ModalModificar from '../../components/Admin/ModalModificar.vue'
+import ModalModificar from '../components/Admin/ModalModificar.vue'
 
 export default{
     name: "Profile",

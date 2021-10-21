@@ -1,6 +1,5 @@
 <template>
 <div class="w-full max-w-xs">
-  <p>Inicie sesion para adquirir un plan</p>
   <form class="bg-red-1000 bg-opacity-90 shadow-md rounded px-8 pt-6 pb-8 mb-4">
     <div class="mb-4">
       <label class="block text-white text-sm font-bold mb-2" for="username">
