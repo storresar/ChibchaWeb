@@ -5,11 +5,11 @@
             <router-view class="md:col-span-3 md:col-start-2 lg:col-start-2 lg:col-span-5"
             ></router-view>
           </transition>
-    </div>  
+    </div>
 </template>
 
 <script>
-import Menu from "../components/Admin/Menu.vue";
+import Menu from "../components/Empleado/Menu.vue";
 
 export default {
   components: {

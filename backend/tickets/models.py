@@ -9,8 +9,8 @@ from django.conf import settings
 class ticket(models.Model):
     cod_cliente = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.DO_NOTHING)
     cod_vendedor = models.ForeignKey(empleado, on_delete=models.DO_NOTHING,null=True)
-    desc_problema = models.CharField(max_length=50)
-    desc_solucion = models.CharField(max_length=50)
+    desc_problema = models.CharField(max_length=350)
+    desc_solucion = models.CharField(max_length=350)
     nivel = models.PositiveSmallIntegerField(default=1)
     solucionado = models.BooleanField(default=False)
 
