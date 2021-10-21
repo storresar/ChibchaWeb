@@ -9,6 +9,9 @@ import Plan from './views/Cliente/Plan.vue'
 import Search from './views/Cliente/Search.vue'
 import SuccessPayment from './views/Cliente/SuccessPayment.vue'
 import Profile from './views/Profile.vue'
+import GestionTickets from './views/Empleado/GestionTickets.vue'
+import SoporteCliente from './views/Cliente/SoporteCliente.vue'
+import Empleado from './views/Empleado.vue'
 
 import { createRouter, createWebHistory } from 'vue-router'
 import {useModalRouter} from "jenesius-vue-modal";
@@ -61,6 +64,25 @@ const routes = [
       {
         path: 'profile',
         component: Profile,
+      },
+      {
+        path: 'soporte',
+        component: SoporteCliente,
+      },
+    ]
+  },
+  {
+    path: '/empleado',
+    component: Empleado,
+    meta: {authRequired: true, employeeRequired : true},  
+    children: [
+      {
+        path: 'profile',
+        component: Profile,
+      },
+      {
+        path: 'gestionTickets',
+        component: GestionTickets,
       },
     ]
   }
