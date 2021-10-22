@@ -147,7 +147,7 @@ export default {
         const store = useStore()
         await store.dispatch('getUserList')
         const users = computed(() => store.getters.getUsers)
-        const nPages = 8
+        const nPages = 5
         const begin = ref(0)
         const end = ref(nPages)
         const paginated = computed(() => users.value.slice(begin.value, end.value))
@@ -157,7 +157,7 @@ export default {
             end.value = begin.value + nPages
         }
         const fowardPage = () => {
-            if (begin.value >= 0 && (Math.floor((begin.value+5)/nPages)*nPages) + nPages < users.value.length) {
+            if (begin.value >= 0 && begin.value+nPages <= users.value.length) {
                 begin.value += nPages
             } else{
                 begin.value = 0

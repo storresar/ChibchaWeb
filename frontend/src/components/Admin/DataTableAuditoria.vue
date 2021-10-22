@@ -103,7 +103,7 @@ export default {
         const store = useStore()
         await store.dispatch('getAudit')
         const audit = computed(() => store.getters.getAudit)
-        const nPages = 10
+        const nPages = 8
         const begin = ref(0)
         const end = ref(nPages)
         const paginated = computed(() => audit.value.slice(begin.value, end.value))
@@ -113,12 +113,15 @@ export default {
             end.value = begin.value + nPages
         }
         const fowardPage = () => {
-            if (begin.value >= 0 && (Math.floor((begin.value+5)/nPages)*nPages) + nPages < audit.value.length) {
-                begin.value += nPages
-            } else{
-                begin.value = 0
-            }
-            end.value = begin.value + nPages
+        if (begin.value >= 0 && begin.value+nPages <= audit.value.length) {
+            begin.value += nPages
+        } else{
+            begin.value = 0
+
+            //(total-inicio) mod pgs
+        }
+        console.log(audit.value.length)
+        end.value = begin.value + nPages
         }
         return {
             paginated, backPage, fowardPage,
