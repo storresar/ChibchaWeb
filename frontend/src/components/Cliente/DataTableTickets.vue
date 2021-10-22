@@ -29,8 +29,8 @@
               </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
-              <tr v-for="ticket in tickets" :key="ticket">
-                <td class="px-6 py-4 whitespace-nowrap">
+              <tr v-for="ticket in tickets_filter" :key="ticket">
+                  <td class="px-6 py-4 whitespace-nowrap">
                   <div class="flex items-center">
                     <div class="ml-4">
                       <div class="text-sm font-small text-gray-800">
@@ -81,6 +81,7 @@
                     </template>
                   </Popper>
                 </td>
+              
               </tr>
             </tbody>
           </table>
@@ -102,17 +103,21 @@ export default {
     const store = useStore();
 
     let tickets = store.getters.getTickets;
+    const user = store.getters.getUser;
 
     await store.dispatch("getTicketsList");
-
+    
     tickets = store.getters.getTickets;
 
-    const seeDetails = (ticket) => {
-        console.log(ticket);
-        openModal(ModalDetalles, {ticket})
+    let tickets_filter = await tickets.filter( 
+      element => element.cod_cliente == user.id
+    )
+    
+    const seeDetails = (tickets_filter) => {
+        openModal(ModalDetalles, {tickets_filter})
     };
 
-    return { tickets, seeDetails };
+    return { tickets, tickets_filter, seeDetails, user };
   },
 };
 </script>

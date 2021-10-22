@@ -1,6 +1,36 @@
 <template>
     <div>
-        a
+        <div class="cardBox">
+				<!-- First box -->
+				<div class="card">				
+					<div>
+						<div class="numbers">1.042</div>
+						<div class="cardName">Dominios disponibles</div>
+					</div>
+					<div class="iconBox">
+						<ion-icon name="eye-outline"></ion-icon>
+					</div>
+				</div>
+				<!-- Second box -->
+				<div class="card">				
+					<div>
+						<div class="numbers">31/10/2021</div>
+						<div class="cardName">Fecha de expiración del plan</div>
+					</div>
+					<div class="iconBox">
+						<ion-icon name="cart-outline"></ion-icon>
+					</div>
+				</div>
+				<!-- Third box -->
+				<div class="card">				
+					<div>
+						<div class="numbers">Template</div>
+						<div class="cardName">Nombre del plan</div>
+					</div>
+
+				</div>	
+			
+			</div>
     </div>
 </template>
 
@@ -14,5 +44,32 @@ export default{
 </script>
 
 <style>
-
+.cardBox {
+	position: relative;
+	width: 100%;
+	padding: 20px;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-gap: 20px;
+}
+.cardBox .card {
+	position: relative;
+	background: #fff;
+	padding: 20px;
+	display: flex;
+	justify-content: space-between;
+	cursor: pointer;
+}
+.cardBox .card .numbers {
+	position: relative;
+	font-size: 2em;
+	font-weight: 500;
+}
+.cardBox .card .cardName {
+	color: #999;
+}
+.cardBox .card .iconBox {
+	font-size: 2.5em;
+	color: #03a9f4;
+}
 </style>

@@ -1,10 +1,13 @@
 <template>
     <div>
-      <div class="search-wrapper cf">
-        <form onsubmit="return false">
-          <input type="text" placeholder="Busca tu dominio aquí..." required v-model="input">
-          <button @click="search">Buscar</button>
-        </form>
+      <div class="form__group search-wrapper cf">
+    <div class="form__group field">
+      <form onsubmit="return false">
+      <input type="input" class="form__field" placeholder="Busca tu dominio aquí..." required v-model="input"/>
+      <button @click="search">Buscar</button>
+      </form>
+    </div>
+
       </div>       
         <div class="flex flex-col overflow-x-auto overflow-y-hidden ">
         <div id="tableMain" style="margin-left:auto;margin-right:auto;display:none;" class="">
@@ -188,6 +191,8 @@
 </script>
 
 <style>
+
+
 
 @keyframes loadingbar {
   0% { opacity: 1 }

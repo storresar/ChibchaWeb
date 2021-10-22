@@ -19,6 +19,8 @@
         class="appearance-none block w-full bg-gray-200 border transition-colors duration-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
         type="text">
       </div>
+      <div>
+      </div>
     </div>
   </form>
 </template>
@@ -28,17 +30,17 @@ import { reactive } from "vue";
 
 export default {
   props: {
-      ticket: Object,
+      tickets_filter: Object,
   },
   setup(props) {
     console.log(props)
     const datos = reactive({
-      desc_problema: props.ticket.desc_problema,
-      nivel: props.ticket.nivel,
-      desc_solucion: props.desc_solucion,
-      solucionado: props.solucionado,
-      vendedor: props.vendedor,
-      cod_cliente: props.id,
+      desc_problema: props.tickets_filter.desc_problema,
+      nivel: props.tickets_filter.nivel,
+      desc_solucion: props.tickets_filter.desc_solucion,
+      solucionado: props.tickets_filter.solucionado,
+      vendedor: props.tickets_filter.vendedor,
+      cod_cliente: props.tickets_filter.id,
     });
 
     return { datos }
@@ -46,3 +48,8 @@ export default {
 };
 
 </script>
+
+<style>
+
+
+</style>
