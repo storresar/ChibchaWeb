@@ -14,6 +14,14 @@ class facturacion_viewset(viewsets.ModelViewSet):
     queryset = facturacion.objects.all()
     serializer_class = facturacion_serializer
 
+    def get_queryset(self):
+        cod_cliente = self.request.query_params.get('cod_cliente')
+        print(cod_cliente)
+        if(cod_cliente == None):
+            return facturacion.objects.all()
+        else:
+            return facturacion.objects.filter(cod_cliente=cod_cliente)
+
     def retrieve(self, request, *args, **kwargs):
         instance = self.get_object()
         serializer = self.get_serializer(instance)
