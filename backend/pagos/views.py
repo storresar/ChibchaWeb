@@ -85,20 +85,20 @@ class facturacion_viewset(viewsets.ModelViewSet):
             print(request.data)
             partial = kwargs.pop('partial', False)
             instance = self.get_object()
-            if request.data['esta_activo'].val() == False:
+            print(instance.esta_activo)
+            if instance.esta_activo == False:
                 plan_escogido = get_object_or_404(plan.objects.filter(pk = request.data['cod_plan']))
                 periodo =  plan_escogido.periodo_fact
                 cliente_Escogido = get_object_or_404(cliente.objects.filter(pk = request.data['cod_cliente']))
                 cod_cliente = cliente_Escogido.cod_usuario
                 request.data['fecha_facturacion'] = date.today()
-                if cliente_Escogido.has_plan == False:
-                    correo = get_object_or_404(usuario.objects.filter(username = cod_cliente)).email
-                    if(periodo == 'MENSUAL'):
-                        print(datetime.now() + timedelta(days=30))
-                        request.data['fecha_cancelacion'] = (datetime.now() + timedelta(days=30)).strftime("%Y-%m-%d")
-                    elif(periodo == 'ANUAL'):
-                        print(datetime.now() + timedelta(days=365))
-                        request.data['fecha_cancelacion'] = (datetime.now() + timedelta(days=365)).strftime("%Y-%m-%d")
+                if(periodo == 'MENSUAL'):
+                    print(datetime.now() + timedelta(days=30))
+                    request.data['fecha_cancelacion'] = (datetime.now() + timedelta(days=30)).strftime("%Y-%m-%d")
+                elif(periodo == 'ANUAL'):
+                    print(datetime.now() + timedelta(days=365))
+                    request.data['fecha_cancelacion'] = (datetime.now() + timedelta(days=365)).strftime("%Y-%m-%d")
+                  
             serializer = self.get_serializer(instance, data=request.data, partial=partial)
             serializer.is_valid(raise_exception=True)
             self.perform_update(serializer)
@@ -111,4 +111,17 @@ class facturacion_viewset(viewsets.ModelViewSet):
         if(cod_cliente == None):
             return facturacion.objects.all()
         else:
+            factura = facturacion.objects.get(cod_cliente=cod_cliente)
+            if(factura.fecha_cancelacion <= date.today()):
+                actualizacion_pago = facturacion(
+                    pk = factura.id,
+                    valor_total = factura.valor_total,
+                    dominios_disponibles = factura.dominios_disponibles,
+                    fecha_facturacion = factura.fecha_facturacion,
+                    fecha_cancelacion = factura.fecha_cancelacion,
+                    esta_activo = False,
+                    cod_cliente = factura.cod_cliente,
+                    cod_plan = factura.cod_plan
+                )
+                actualizacion_pago.save()
             return facturacion.objects.filter(cod_cliente=cod_cliente)
