@@ -107,12 +107,14 @@
                         >
                           Ver detalles
                         </button>
+                        <div v-if="(ticket.nivel < 3 && !ticket.solucionado)">
                         <button
                           @click="upgradeLevel(ticket)"
                           class="px-4 py-2 text-white transition duration-200 rounded shadow-md bg-red-50 hover:bg-deep-purple-accent-100 hover:text-black focus:shadow-outline focus:outline-none"
                         >
                           Aumentar nivel
                         </button>
+                        </div>
                       </div>
                     </template>
                   </Popper>
@@ -129,7 +131,7 @@
 
 <script>
 /* eslint-disable no-unused-vars */
-import { reactive, computed, watch, watchEffect } from "vue";
+import { computed } from "vue";
 import { useStore } from "vuex";
 import { openModal } from "jenesius-vue-modal";
 import ModalDetalles from "../../components/Empleado/ModalDetalles.vue";
@@ -145,7 +147,7 @@ export default {
     let tickets = computed(() => store.getters.getTickets);
 
     const tickets_filter = computed(() => 
-    tickets.value.filter(ticket => ticket.nivel == employee.nivel_empleado)         ) 
+    tickets.value.filter(ticket => ticket.nivel == employee.nivel_empleado)); 
 
     await store.dispatch("getUserList");
     let list_users = store.getters.getUsers;
@@ -173,13 +175,18 @@ export default {
             nivel: ticket.nivel,
             solucionado: ticket.solucionado,
             cod_cliente: ticket.cod_cliente,
-            cod_vendedor: ticket.cod_vendedor
+            cod_vendedor: ticket.cod_vendedor,
+            is_respondido: ticket.is_respondido,
         }
        
         await store.dispatch('updateTicket', ticket2)
     }
 
-    return { user, employee, tickets_filter, upgradeLevel, filterName};
+    const seeDetails = (tickets_filter) => {
+        openModal(ModalDetalles, {tickets_filter})
+    };
+
+    return { seeDetails, user, employee, tickets_filter, upgradeLevel, filterName};
   },
 };
 </script>
