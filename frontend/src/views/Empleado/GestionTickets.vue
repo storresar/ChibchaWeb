@@ -12,14 +12,13 @@
           class=" grid justify-self-center w-full lg:w-4/5 rounded-lg lg:rounded-l-lg lg:rounded-r-lg shadow-2xl bg-white opacity-80 mx-6 lg:mx-0"
         >
           <dl class="responsive-tabs">
-  
             <dt id="historial" class="active" @click="tabChanger">
               Gestión de tickets
             </dt>
             <dd>
-                <suspense>
+              <suspense>
                 <DataTableTickets />
-                </suspense>
+              </suspense>
             </dd>
           </dl>
         </div>
@@ -29,26 +28,15 @@
 </template>
 
 <script>
-
 /* eslint-disable no-unused-vars */
-import DataTableTickets from '../../components/Cliente/DataTableTickets.vue'
-import { reactive } from "vue";
+import DataTableTickets from "../../components/Empleado/DataTableTickets.vue";
 import { useStore } from "vuex";
 
 export default {
-    
-setup() {
+  setup() {
     const store = useStore();
-    const user = store.getters.getUser;
-    const data = reactive({
-      desc_problema: "",
-      nivel: 1,
-      desc_solucion: "No solucionado",
-      solucionado: false,
-      vendedor: null,
-      cod_cliente: user.id,
-    });
-
+    let user = store.getters.getUser;
+    store.dispatch("retrieveEmployee", user.id);
 
     function tabChanger() {
       var $ = function(selector, context) {
@@ -70,14 +58,10 @@ setup() {
       });
     }
 
-    function sendForm() {
-      store.dispatch("createTicket", data);
-    }
-
-    return { tabChanger, sendForm, data };
+    return { tabChanger };
   },
-  components:{
-      DataTableTickets,
+  components: {
+    DataTableTickets,
   },
 };
 </script>

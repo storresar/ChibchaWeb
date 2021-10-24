@@ -223,15 +223,16 @@ const store = createStore({
       } else throw 'Error en el registro. Intentelo más tarde'
     },
     async updateTicket(context, ticket){
-      var res = await fetch(`${apiBase}ticket/`, {
+      console.log(ticket);
+      var res = await fetch(`${apiBase}ticket/${ticket.id}/`, {
         method: 'PUT',
         headers: {
-          'Content-Type': 'multipart/form-data',
+          'Content-Type': 'application/json',
         },
-        body: parseToFormData(ticket)
+        body: JSON.stringify(ticket)
       })
       if (res.ok) {
-        if (context.getters.getToken) context.dispatch('getTicketsList')
+        await store.dispatch("getTicketsList");
         return 'Exito'
       } else throw 'Error en el registro. Intentelo más tarde'
     },
