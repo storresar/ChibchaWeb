@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-luq&+z$lyh5)zbv)=&*ywoa-ybj$qjzxz$p)2gr9$b*#%eyv^y
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0.0.0.0', 'rocky-basin-43749.herokuapp.com']
 
 AUTH_USER_MODEL = 'usuarios.usuario'
 
