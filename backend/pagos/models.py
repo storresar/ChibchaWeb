@@ -20,7 +20,7 @@ class facturacion(models.Model):
     cod_plan = models.OneToOneField(plan , on_delete = models.DO_NOTHING,null=False)
     valor_total = models.PositiveSmallIntegerField(default=0)
     dominios_disponibles = models.PositiveSmallIntegerField(default=0)
-    fecha_facturacion = models.DateField(auto_now=True)
+    fecha_facturacion = models.DateField(auto_now=False,null=True)
     fecha_cancelacion = models.DateField(auto_now=False,null=True)
     esta_activo = models.BooleanField(default=True)
 
