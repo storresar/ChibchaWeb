@@ -1,7 +1,7 @@
 import { createStore } from 'vuex'
 
 const apiBase = process.env.NODE_ENV == 'development' ?
-'http://127.0.0.1:8000/api/' : 'https://rocky-basin-43749.herokuapp.com/'
+'http://127.0.0.1:8000/api/' : 'https://rocky-basin-43749.herokuapp.com/api/'
 
 
 function parseToFormData(data) {
