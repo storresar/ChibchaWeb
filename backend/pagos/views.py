@@ -2,7 +2,7 @@ from rest_framework import viewsets
 from .models import facturacion,plan
 from .serializers import facturacion_serializer
 from rest_framework.response import Response
-from datetime import datetime,timedelta
+from datetime import datetime,timedelta,date
 from django.shortcuts import get_object_or_404
 from usuarios.models import cliente,usuario
 from auditoria.models import auditoria
@@ -24,6 +24,20 @@ class facturacion_viewset(viewsets.ModelViewSet):
 
     def retrieve(self, request, *args, **kwargs):
         instance = self.get_object()
+        if( instance.fecha_cancelacion <= date.today()):
+            actualizacion_pago = facturacion(
+                pk = instance.id,
+                valor_total = instance.valor_total,
+                dominios_disponibles = instance.dominios_disponibles,
+                fecha_facturacion = instance.fecha_facturacion,
+                fecha_cancelacion = instance.fecha_cancelacion,
+                esta_activo = False,
+                cod_cliente = instance.cod_cliente,
+                cod_plan = instance.cod_plan
+            )
+            actualizacion_pago.save()
+        else:
+            print('NO PA')
         serializer = self.get_serializer(instance)
         return Response(serializer.data)
 
