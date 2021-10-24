@@ -9,7 +9,11 @@
 					<div class="p-4 md:p-12 text-center lg:text-left">
 						<!-- Image for mobile view-->
 						<div class="block lg:hidden rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 bg-cover" :style="`background-image: url('${publicPath}${urlImagen}')`"></div>
-						<h1 class="text-3xl font-bold pt-8 lg:pt-0">Tu plan</h1>
+						<div class="flex">
+							<h1 class="text-3xl font-bold pt-8 lg:pt-0">Tu plan</h1>
+							<h1 class="text-3xl font-bold pt-8 lg:pt-0 ml-2" v-if="datosPlan.esta_activo">(Activo)</h1>
+							<h1 class="text-3xl font-bold pt-8 lg:pt-0 ml-2" v-if="!datosPlan.esta_activo">(Inactivo)</h1>
+						</div>
 						<div class="mx-auto lg:mx-0 w-4/5 pt-3 border-b-2 border-red-500 opacity-25"></div>
 						<div class="pt-4 text-lg text-gray-600" v-if="datosPlan.cod_plan == 1 || datosPlan.cod_plan == 2">Chibcha Plata</div>
 						<div class="pt-4 text-lg text-gray-600" v-if="datosPlan.cod_plan == 3 || datosPlan.cod_plan == 4">Chibcha Oro</div>
@@ -19,7 +23,7 @@
 						<p class="pt-2 text-gray-600 text-xs lg:text-sm flex items-center justify-center lg:justify-start"><svg class="h-4 text-red-50 pr-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>Fecha cancelación : {{datosPlan.fecha_cancelacion}}</p>
 						<p class="pt-8 text-sm"></p>
 
-						<div class="pt-12 pb-8">
+						<div class="pt-12 pb-8" v-if="!datosPlan.esta_activo">
 							<p class="pt-2 ml-4 text-gray-600 text-xs lg:text-sm flex items-center justify-center lg:justify-start">Tu plan ya expiró</p>
 							<button @click="modifyUser(user)" class="bg-red-50 hover:bg-deep-purple-accent-100 text-white font-bold py-2 px-4 rounded-full">
 							Renueva tu plan aqui

@@ -4,7 +4,7 @@
           <div class="p-5 rounded shadow-sm">
             <div class="flex items-center justify-between mb-4">
               <div class="inline-flex">
-                  <img src="chibchaoro.png" alt="" class="w-16 md:w-16 m-auto" >
+                  <img :src="`${publicPath}chibchaoro.png`" alt="" class="w-16 md:w-16 m-auto" >
                   <span
                     class="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase"
                     >ChibchaWeb</span
@@ -73,13 +73,13 @@
             </nav>
           </div>
     </div>
-    <div class="flex flex-col gap-4 p-5 items-start">
-      <div class="flex">
-          <img src="chibchaoro.png" alt="" class="w-16 md:w-16 m-auto" >
+    <div class="flex flex-col gap-4 p-5 items-baseline">
+      <div class="flex md:flex-col w-full">
+          <img :src="`${publicPath}chibchaoro.png`" alt="" class="w-16 md:w-20 m-auto flex justify-center" >
          
-        <span class="ml-2 sm:text-xl md:text-base font-bold tracking-wide text-white uppercase self-center">
-          ChibchaWeb
-        </span>
+          <span class="ml-2 sm:text-xl lg:block lg:text-left font-bold tracking-wide text-white uppercase self-center justify-self-start">
+            ChibchaWeb
+          </span>
       </div>
       <ul class="hidden md:flex md:flex-col gap-4 mt-4">
         <li class="text-white">GENERAL</li>
@@ -162,6 +162,7 @@ export default {
   data() {
     return {
       isMenuOpen: false,
+      publicPath: process.env.BASE_URL
     };
   },
   methods: {
