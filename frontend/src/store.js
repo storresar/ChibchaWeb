@@ -24,6 +24,7 @@ const store = createStore({
       employee : undefined,
       audit : undefined,
       datosPlan: undefined,
+      domains: undefined,
     }
   },
   getters: {
@@ -51,6 +52,10 @@ const store = createStore({
     getDatosPlan: state => {
       console.log(state.datosPlan);
       return state.datosPlan
+    },
+    getDominios: state => {
+      console.log(state.domains)
+      return state.domains
     }
   },
   mutations: {
@@ -91,6 +96,9 @@ const store = createStore({
     storeDatosPlan: (state, datosPlan) => {
       state.datosPlan = datosPlan
     },
+    storeDominios: (state,domains) => {
+      state.domains = domains
+    }
   },
   actions: {
     async retrieveUser(context, id){
@@ -287,6 +295,23 @@ const store = createStore({
         const datos = await res.json()
         context.commit('storeDatosPlan', datos[0])
       }
+    },
+    async retrieveDominios(context,facturacionId){
+      var res = await fetch(`${apiBase}dominios/?cod_facturacion=${facturacionId}`)
+      if (res.ok){
+        const datos = await res.json()
+        context.commit('storeDominios', datos)
+      }
+    },
+    async deleteDomain(context, data){
+      var {domainId,cod_factura} = data
+      var res = await fetch(`${apiBase}dominios/${domainId}/`, {
+          method: 'DELETE',
+        })
+        if (res.ok) {
+          if (context.getters.getToken) context.dispatch('retrieveDominios',cod_factura)
+          return 'Exito'
+        } else throw 'Error en el proceso. Intentelo más tarde'
     },
   }
 })

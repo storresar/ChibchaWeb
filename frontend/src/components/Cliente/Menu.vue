@@ -63,7 +63,7 @@
                   </router-link>
                 </li>
                 <li>
-                  <router-link @click="isMenuOpen = false" to="/admin/stats" class="ml-2 font-medium tracking-wide text-white transition-colors duration-200 hover:text-red-50 flex gap-2">
+                  <router-link  to="/client/myDomains" class="ml-2 font-medium tracking-wide text-white transition-colors duration-200 hover:text-red-50 flex gap-2">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 self-center" viewBox="0 0 20 20" fill="currentColor">
                     <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z" />
                     <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z" />
@@ -93,7 +93,7 @@
       <div class="flex md:flex-col w-full">
           <img :src="`${publicPath}chibchaoro.png`" alt="" class="w-16 md:w-20 m-auto flex justify-center" >
          
-          <span class="ml-2 sm:text-xl lg:block lg:text-left font-bold tracking-wide text-white uppercase self-center justify-self-start">
+        <span class="ml-2 sm:text-xl lg:block lg:text-left font-bold tracking-wide text-white uppercase self-center justify-self-start">
             ChibchaWeb
           </span>
       </div>
@@ -117,7 +117,7 @@
         </li>
           <li>
             <router-link to="/client/soporte" class="ml-2 font-medium tracking-wide text-white transition-colors duration-200 hover:text-red-50 flex gap-2">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
               </svg>
                   <p>Soporte a cliente</p>
@@ -133,7 +133,7 @@
           </router-link>
         </li>
         <li>
-          <router-link @click="isMenuOpen = false" to="/admin/stats" class="ml-2 font-medium tracking-wide text-white transition-colors duration-200 hover:text-red-50 flex gap-2">
+          <router-link  to="/client/myDomains" class="ml-2 font-medium tracking-wide text-white transition-colors duration-200 hover:text-red-50 flex gap-2">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 self-center" viewBox="0 0 20 20" fill="currentColor">
             <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z" />
             <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z" />

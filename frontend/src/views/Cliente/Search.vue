@@ -93,7 +93,8 @@
     };
 
     const selectDomain = (domain => {
-      console.log(domain);
+      console.log(domain.DomainName);
+      console.log('esta')
     })
 
     async function searchRelatedDomains(domain_name) {

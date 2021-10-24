@@ -12,6 +12,7 @@ import Profile from './views/Profile.vue'
 import GestionTickets from './views/Empleado/GestionTickets.vue'
 import SoporteCliente from './views/Cliente/SoporteCliente.vue'
 import Empleado from './views/Empleado.vue'
+import MisDominios from './views/Cliente/MisDominios.vue'
 
 import { createRouter, createWebHistory } from 'vue-router'
 import {useModalRouter} from "jenesius-vue-modal";
@@ -68,6 +69,10 @@ const routes = [
       {
         path: 'soporte',
         component: SoporteCliente,
+      },
+      {
+        path: 'myDomains',
+        component: MisDominios,
       },
     ]
   },

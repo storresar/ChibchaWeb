@@ -34,3 +34,11 @@ class dominio_viewSet(viewsets.ModelViewSet):
             self.perform_create(serializer)
             headers = self.get_success_headers(serializer.data)
             return Response(serializer.data)
+
+    def get_queryset(self):
+        cod_facturacion = self.request.query_params.get('cod_facturacion')
+        print(cod_facturacion)
+        if(cod_facturacion == None):
+            return dominio.objects.all()
+        else:
+            return dominio.objects.filter(cod_facturacion=cod_facturacion)
