@@ -7,6 +7,11 @@ from django.contrib.auth.hashers import make_password
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
 from auditoria.models import auditoria
+from rest_framework.response import Response
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import AllowAny
+from django.conf import settings
+import requests
 # Create your views here.
 
 class UsuarioViewSet(viewsets.ModelViewSet):
@@ -107,3 +112,18 @@ class cliente_viewset(viewsets.ModelViewSet):
             return cliente.objects.all()
         else:
             return cliente.objects.filter(cod_usuario=cod_usuario)
+
+@api_view(['POST'])
+@permission_classes((AllowAny,))
+def verificar_captcha(request):
+    recaptcha_response = request.data['g-recaptcha-response']
+    data = {
+        'secret': settings.GOOGLE_RECAPTCHA_SECRET_KEY,
+        'response': recaptcha_response
+    }
+    r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=data)
+    result = r.json()
+    if result['success']:
+        return Response(True, status=r.status_code)
+    else:
+        return Response(False, status=r.status_code)

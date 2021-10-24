@@ -23,6 +23,7 @@ const store = createStore({
       client : undefined,
       employee : undefined,
       audit : undefined,
+      datosPlan: undefined,
     }
   },
   getters: {
@@ -47,6 +48,10 @@ const store = createStore({
     getAudit: state =>{
       return state.audit;
     },
+    getDatosPlan: state => {
+      console.log(state.datosPlan);
+      return state.datosPlan
+    }
   },
   mutations: {
     setToken: value => {
@@ -82,7 +87,10 @@ const store = createStore({
     },
     storeAudit: (state, audit) => {
       state.audit = audit
-    }
+    },
+    storeDatosPlan: (state, datosPlan) => {
+      state.datosPlan = datosPlan
+    },
   },
   actions: {
     async retrieveUser(context, id){
@@ -220,7 +228,7 @@ const store = createStore({
         headers: {
           'Content-Type': 'multipart/form-data',
         },
-        body: JSON.stringify(ticket)
+        body: parseToFormData(ticket)
       })
       if (res.ok) {
         if (context.getters.getToken) context.dispatch('getTicketsList')
@@ -261,6 +269,23 @@ const store = createStore({
       if (res.ok) {
         return 'Exito'
       } else throw 'Error al registrar el pago'
+    },
+    async verificarCaptcha (context, captcha) {
+      var res = await fetch(`${apiBase}verificar_captcha/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(captcha)
+      })
+      if (!res.ok) throw 'Error en el captcha'
+    },
+    async retrieveDatosPlan (context, clienteId) {
+      var res = await fetch(`${apiBase}facturacion/?cod_cliente=${clienteId}`)
+      if (res.ok){
+        const datos = await res.json()
+        context.commit('storeDatosPlan', datos[0])
+      }
     },
   }
 })

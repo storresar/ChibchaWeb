@@ -109,12 +109,12 @@ export default {
     }
 
     const datos = reactive({
-      firstName: "Laura",
-      lastName: "Chiquillo",
-      username: "Lchiquillo",
-      email: "jdquinterog@unbosque.edu.co",
-      password: "Plumitas122302",
-      confirmPassword: "Plumitas122302",
+      firstName: "",
+      lastName: "",
+      username: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
     });
 
     const passwordRef = computed(() => datos.password)
@@ -154,7 +154,7 @@ export default {
             swal.showLoading()
           }
         });
-        store.dispatch('createUser', {usuario:user, undefined})
+        store.dispatch('createUser', {usuario:user, cliente: {cod_usuario : -1}})
         .then(() => swal.fire({title: 'Exito en registro :3', icon:'success'}))
         .catch(() => swal.fire({title: 'Error en el registo :c', icon:'error'}))
       }
