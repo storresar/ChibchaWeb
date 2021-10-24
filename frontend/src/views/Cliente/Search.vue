@@ -72,10 +72,12 @@
 </template>
 
 <script>
-  import { ref } from "vue";
+  import { ref,inject } from "vue";
+  import { useStore } from "vuex";
+  
   export default {
     name: "SearchDomain",
-    setup() {
+    async setup() {
     let input = ref("");
     let result_related = ref();
 
@@ -91,10 +93,39 @@
         hideDiv();
       }
     };
-
+    const store = useStore()
+    const swal = inject('$swal')
+    await store.dispatch("retrieveClient", store.getters.getUser.id)
+    await store.dispatch("retrieveDatosPlan", store.getters.getClient.id)
     const selectDomain = (domain => {
-      console.log(domain.DomainName);
-      console.log('esta')
+      const dominio = {
+          nom_dominio: domain.DomainNoExt,
+          link_dominio: domain.DomainName,
+          cod_facturacion: store.getters.getDatosPlan.id
+        }
+      if(store.getters.getDatosPlan.esta_activo == true){
+        console.log(domain.DomainName);
+        swal.fire({
+            title: 'Espere un momento',
+            html: 'estamos registrandolo en el sistema',
+            allowOutsideClick: false,
+            didOpen: () => {
+              swal.showLoading()
+            }
+          });
+          store.dispatch('pushDomain', dominio)
+          .then(() => swal.fire({title: 'Exito en registro', icon:'success'}))
+          .catch(error => {
+            swal.fire({title: 'Error en el registo', icon:'error'})
+            console.error(error);
+          })
+      }else{
+        swal.fire({
+          title: 'SU PLAN NO ESTÁ ACTIVO',
+          icon:'error'
+        });
+      }
+        console.log(dominio)
     })
 
     async function searchRelatedDomains(domain_name) {

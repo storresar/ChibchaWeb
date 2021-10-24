@@ -51,6 +51,7 @@ class facturacion_viewset(viewsets.ModelViewSet):
                 request.data['fecha_cancelacion'] = (datetime.now() + timedelta(days=365)).strftime("%Y-%m-%d")
             request.data['valor_total'] = plan_escogido.valor_plan
             request.data['dominios_disponibles'] = plan_escogido.cant_dominios
+            request.data['esta_activo'] = True
             serializer = self.get_serializer(data=request.data)
             if(serializer.is_valid):
 
@@ -79,24 +80,25 @@ class facturacion_viewset(viewsets.ModelViewSet):
         else:
             return Response(status=status.HTTP_406_NOT_ACCEPTABLE)
 
-    def update(self, request, *args, **kwargs):
+    def update(self, request, *args, **kwargs): 
             request.data._mutable = True
+            print(request.data)
             partial = kwargs.pop('partial', False)
-            plan_escogido = get_object_or_404(plan.objects.filter(pk = request.data['cod_plan']))
-            periodo =  plan_escogido.periodo_fact
-            cliente_Escogido = get_object_or_404(cliente.objects.filter(pk = request.data['cod_cliente']))
-            cod_cliente = cliente_Escogido.cod_usuario
-            print(cliente_Escogido.has_plan)
-            request.data['fecha_facturacion'] = date.today()
-            if cliente_Escogido.has_plan == False:
-                correo = get_object_or_404(usuario.objects.filter(username = cod_cliente)).email
-                if(periodo == 'MENSUAL'):
-                    print(datetime.now() + timedelta(days=30))
-                    request.data['fecha_cancelacion'] = (datetime.now() + timedelta(days=30)).strftime("%Y-%m-%d")
-                elif(periodo == 'ANUAL'):
-                    print(datetime.now() + timedelta(days=365))
-                    request.data['fecha_cancelacion'] = (datetime.now() + timedelta(days=365)).strftime("%Y-%m-%d")
             instance = self.get_object()
+            if request.data['esta_activo'].val() == False:
+                plan_escogido = get_object_or_404(plan.objects.filter(pk = request.data['cod_plan']))
+                periodo =  plan_escogido.periodo_fact
+                cliente_Escogido = get_object_or_404(cliente.objects.filter(pk = request.data['cod_cliente']))
+                cod_cliente = cliente_Escogido.cod_usuario
+                request.data['fecha_facturacion'] = date.today()
+                if cliente_Escogido.has_plan == False:
+                    correo = get_object_or_404(usuario.objects.filter(username = cod_cliente)).email
+                    if(periodo == 'MENSUAL'):
+                        print(datetime.now() + timedelta(days=30))
+                        request.data['fecha_cancelacion'] = (datetime.now() + timedelta(days=30)).strftime("%Y-%m-%d")
+                    elif(periodo == 'ANUAL'):
+                        print(datetime.now() + timedelta(days=365))
+                        request.data['fecha_cancelacion'] = (datetime.now() + timedelta(days=365)).strftime("%Y-%m-%d")
             serializer = self.get_serializer(instance, data=request.data, partial=partial)
             serializer.is_valid(raise_exception=True)
             self.perform_update(serializer)
