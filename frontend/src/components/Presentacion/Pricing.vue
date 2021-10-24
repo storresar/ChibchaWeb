@@ -28,11 +28,11 @@
           <img src="chibchaplata.png" alt="" class="w-56 md:w-60 m-auto" >
           <div class="text-lg font-semibold">Chibcha-Plata</div>
           <div class="flex items-center justify-center mt-2">
-            <div class="mr-1 text-5xl font-bold">  $50000  </div><br>
-            <div class="text-gray-700">Anual</div>
+            <div class="mr-1 text-4xl font-bold">  $50.000</div><br>
+            <div class="text-gray-700">COP Anual</div>
           </div>
           <div class="mt-2 space-y-3">
-            <div class="text-gray-700">$5000 mensual</div>
+            <div class="text-gray-700">$5.000 COP mensual</div>
             <div class="text-gray-700">50/Gb de almacenamiento</div>
             <div class="text-gray-700">Dos sitios web</div>
             <div class="text-gray-700">Dos cuentas de correo</div>
@@ -54,11 +54,11 @@
           <img src="chibchaoro.png" alt="" class="w-56 md:w-60 m-auto" >
           <div class="text-lg font-semibold">Chibcha-Oro</div>
           <div class="flex items-center justify-center mt-2">
-            <div class="mr-1 text-5xl font-bold">  $100000  </div><br>
-            <div class="text-gray-700">Anual</div>
+            <div class="mr-1 text-4xl font-bold">  $100.000 </div><br>
+            <div class="text-gray-700">COP Anual</div>
           </div>
           <div class="mt-2 space-y-3">
-            <div class="text-gray-700">$10000 mensual</div>
+            <div class="text-gray-700">$10.000 COP mensual</div>
             <div class="text-gray-700">100/Gb de almacenamiento</div>
             <div class="text-gray-700">50 sitios web</div>
             <div class="text-gray-700">100 cuentas de correo</div>
@@ -76,11 +76,11 @@
 
           <div class="text-lg font-semibold">Platino</div>
           <div class="flex items-center justify-center mt-2">
-            <div class="mr-1 text-5xl font-bold">$150000</div>
-            <div class="text-gray-700">Anual</div>
+            <div class="mr-1 text-4xl font-bold">$150.000</div>
+            <div class="text-gray-700">COP Anual</div>
           </div>
           <div class="mt-2 space-y-3">
-            <div class="text-gray-700">15000 mensual</div>
+            <div class="text-gray-700">$15.000 COP mensual</div>
             <div class="text-gray-700">200Gb de almacenamiento</div>
             <div class="text-gray-700">200 sitios web</div>
             <div class="text-gray-700">Correo ilimitado</div>
