@@ -96,6 +96,7 @@ WSGI_APPLICATION = 'ChichaWeb.wsgi.application'
 
 CORS_ALLOWED_ORIGINS  = [
     "http://localhost:3000",
+    "https://chibcha-web.vercel.app",
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
