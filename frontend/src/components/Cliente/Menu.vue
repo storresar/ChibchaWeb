@@ -29,7 +29,7 @@
             <nav>
               <ul class="space-y-4">
                 <li class="text-white">GENERAL</li>
-                <li v-if="has_planC">
+                <li>
                   <router-link to="/client/plan" class="ml-2 font-medium tracking-wide text-white transition-colors duration-200 hover:text-red-50 flex gap-2">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
@@ -63,16 +63,9 @@
                   </router-link>
                 </li>
                 <li>
-<<<<<<< Updated upstream
-                  <router-link  to="/client/myDomains" class="ml-2 font-medium tracking-wide text-white transition-colors duration-200 hover:text-red-50 flex gap-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 self-center" viewBox="0 0 20 20" fill="currentColor">
-                    <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z" />
-                    <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z" />
-=======
                   <router-link @click="isMenuOpen = false" to="/admin/stats" class="ml-2 font-medium tracking-wide text-white transition-colors duration-200 hover:text-red-50 flex gap-2">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
->>>>>>> Stashed changes
                   </svg>
                   <p>Mis dominios</p>
                   </router-link>
@@ -105,13 +98,13 @@
       <div class="flex md:flex-col w-full">
           <img :src="`${publicPath}chibchaoro.png`" alt="" class="w-16 md:w-20 m-auto flex justify-center" >
          
-        <span class="ml-2 sm:text-xl lg:block lg:text-left font-bold tracking-wide text-white uppercase self-center justify-self-start">
+          <span class="ml-2 sm:text-xl lg:block lg:text-left font-bold tracking-wide text-white uppercase self-center justify-self-start">
             ChibchaWeb
           </span>
       </div>
       <ul class="hidden md:flex md:flex-col gap-4 mt-4">
         <li class="text-white">GENERAL</li>
-        <li v-if="has_planC">
+        <li>
           <router-link to="/client/plan" class="ml-2 font-medium tracking-wide text-white transition-colors duration-200 hover:text-red-50 flex gap-2">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
@@ -129,13 +122,8 @@
         </li>
           <li>
             <router-link to="/client/soporte" class="ml-2 font-medium tracking-wide text-white transition-colors duration-200 hover:text-red-50 flex gap-2">
-<<<<<<< Updated upstream
-             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
-=======
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
->>>>>>> Stashed changes
               </svg>
                   <p>Soporte a cliente</p>
                 </router-link> 
@@ -150,16 +138,9 @@
           </router-link>
         </li>
         <li>
-<<<<<<< Updated upstream
-          <router-link  to="/client/myDomains" class="ml-2 font-medium tracking-wide text-white transition-colors duration-200 hover:text-red-50 flex gap-2">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 self-center" viewBox="0 0 20 20" fill="currentColor">
-            <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z" />
-            <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z" />
-=======
           <router-link @click="isMenuOpen = false" to="/admin/stats" class="ml-2 font-medium tracking-wide text-white transition-colors duration-200 hover:text-red-50 flex gap-2">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
->>>>>>> Stashed changes
           </svg>
           <p>Mis dominios</p>
           </router-link>
@@ -212,26 +193,18 @@
 
 <script>
 import { openModal } from "jenesius-vue-modal";
-import { mapMutations, mapGetters, mapActions } from 'vuex';
-import { ModalInicio } from '../Presentacion/ModalInicio.vue';
+import { mapMutations } from 'vuex';
+import { ModalInicio } from '../Presentacion/ModalInicio.vue'
 
 export default {
-  props: {
-    has_plan: Boolean,
-  },
   data() {
     return {
-      has_planC : this.has_plan,
       isMenuOpen: false,
       publicPath: process.env.BASE_URL,
     };
   },
-  computed: {
-    ...mapGetters(['getClient'])
-  },
   methods: {
     ...mapMutations(['logoutUser']),
-    ...mapActions(['retrieveClient']),
     abrirModal(){
       openModal (ModalInicio)
       this.isMenuOpen = false
@@ -241,11 +214,6 @@ export default {
       this.$router.push("/")
       this.$router.go(0)
     }
-  },
-  async created() {
-    await this.retrieveClient(window.localStorage.getItem('userId'))
-    if (this.getClient.has_plan) this.has_planC = true
   }
-
 };
 </script>

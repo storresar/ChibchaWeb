@@ -163,8 +163,12 @@
                     @click="isMenuOpen = false"
                     aria-label="Product pricing"
                     title="Product pricing"
-                    class="font-medium tracking-wide text-white transition-colors duration-200 hover:text-red-50"
-                    >Planes</a
+                    class="flex font-medium tracking-wide text-white transition-colors duration-200 hover:text-red-50"
+                    >
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                    Planes</a
                   >
                 </li>
                 <li>
