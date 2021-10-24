@@ -50,11 +50,9 @@ const store = createStore({
       return state.audit;
     },
     getDatosPlan: state => {
-      console.log(state.datosPlan);
       return state.datosPlan
     },
     getDominios: state => {
-      console.log(state.domains)
       return state.domains
     }
   },

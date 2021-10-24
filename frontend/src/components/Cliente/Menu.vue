@@ -29,7 +29,7 @@
             <nav>
               <ul class="space-y-4">
                 <li class="text-white">GENERAL</li>
-                <li>
+                <li v-if="has_planC">
                   <router-link to="/client/plan" class="ml-2 font-medium tracking-wide text-white transition-colors duration-200 hover:text-red-50 flex gap-2">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
@@ -99,7 +99,7 @@
       </div>
       <ul class="hidden md:flex md:flex-col gap-4 mt-4">
         <li class="text-white">GENERAL</li>
-        <li>
+        <li v-if="has_planC">
           <router-link to="/client/plan" class="ml-2 font-medium tracking-wide text-white transition-colors duration-200 hover:text-red-50 flex gap-2">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
@@ -183,18 +183,26 @@
 
 <script>
 import { openModal } from "jenesius-vue-modal";
-import { mapMutations } from 'vuex';
-import { ModalInicio } from '../Presentacion/ModalInicio.vue'
+import { mapMutations, mapGetters, mapActions } from 'vuex';
+import { ModalInicio } from '../Presentacion/ModalInicio.vue';
 
 export default {
+  props: {
+    has_plan: Boolean,
+  },
   data() {
     return {
+      has_planC : this.has_plan,
       isMenuOpen: false,
       publicPath: process.env.BASE_URL,
     };
   },
+  computed: {
+    ...mapGetters(['getClient'])
+  },
   methods: {
     ...mapMutations(['logoutUser']),
+    ...mapActions(['retrieveClient']),
     abrirModal(){
       openModal (ModalInicio)
       this.isMenuOpen = false
@@ -204,6 +212,11 @@ export default {
       this.$router.push("/")
       this.$router.go(0)
     }
+  },
+  async created() {
+    await this.retrieveClient(window.localStorage.getItem('userId'))
+    if (this.getClient.has_plan) this.has_planC = true
   }
+
 };
 </script>

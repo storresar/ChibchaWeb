@@ -52,7 +52,7 @@ export default{
 		const store = useStore()
 
 		const publicPath = process.env.BASE_URL
-        
+        await store.dispatch('retrieveUser', window.localStorage.getItem('userId'))
 		await store.dispatch('retrieveClient', store.getters.getUser.id)
 		await store.dispatch('retrieveDatosPlan', store.getters.getClient.id)
 		const datosPlan = computed(() => store.getters.getDatosPlan)
@@ -60,7 +60,7 @@ export default{
 		const urlImagen = computed(() => {
 			if (datosPlan.value.cod_plan == 1 || datosPlan.value.cod_plan == 2) return 'chibchaplata.png'
 			else if (datosPlan.value.cod_plan == 3 || datosPlan.value.cod_plan == 4) return 'chibchaoro.png'
-			else return 'chibchaplatino.png'
+			else return 'chibchaplatino2.png'
 		})
 
 		

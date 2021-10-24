@@ -132,14 +132,14 @@ export default {
     }
 
     const datos = reactive({
-      firstName: "Laura",
-      lastName: "Chiquillo",
-      username: "Mividalinda",
-      email: "lchiquillo@unbosque.edu.co",
-      password: "Plumitas122302",
-      confirmPassword: "Plumitas122302",
-      rol: "2",
-      nivelEmpleado: "1",
+      firstName: "",
+      lastName: "",
+      username: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+      rol: "3",
+      nivelEmpleado: "",
     });
 
     const passwordRef = computed(() => datos.password)
