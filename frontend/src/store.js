@@ -311,6 +311,15 @@ const store = createStore({
           return 'Exito'
         } else throw 'Error en el proceso. Intentelo más tarde'
     },
+    async pushDomain(context, data){
+      var res = await fetch(`${apiBase}dominios/`, {
+        method: 'POST',
+        body: parseToFormData(data)
+      })
+      if (res.ok) {
+        return 'Exito'
+      } else throw 'Error al registrar el pago'
+    }
   }
 })
 export default store;

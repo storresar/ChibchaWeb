@@ -33,9 +33,9 @@
               Historial de tickets
             </dt>
             <dd>
-                <suspense>
+              <suspense>
                 <DataTableTickets />
-                </suspense>
+              </suspense>
             </dd>
           </dl>
         </div>
@@ -45,26 +45,25 @@
 </template>
 
 <script>
-
 /* eslint-disable no-unused-vars */
-import DataTableTickets from '../../components/Cliente/DataTableTickets.vue'
-import { reactive } from "vue";
+import DataTableTickets from "../../components/Cliente/DataTableTickets.vue";
+import { computed, inject } from "vue";
 import { useStore } from "vuex";
 
 export default {
-    
-setup() {
+  setup() {
     const store = useStore();
+    const swal = inject("$swal");
     const user = store.getters.getUser;
-    const data = reactive({
+    const data = computed(() => ({
       desc_problema: "",
       nivel: 1,
-      desc_solucion: "No solucionado",
+      desc_solucion: "Sin respuesta.",
       solucionado: false,
       vendedor: null,
       cod_cliente: user.id,
-    });
-
+      is_respondido: false,
+    }));
 
     function tabChanger() {
       var $ = function(selector, context) {
@@ -87,13 +86,29 @@ setup() {
     }
 
     function sendForm() {
-      store.dispatch("createTicket", data);
+      swal.fire({
+        title: "Espere un momento",
+        html: "Enviando ticket...",
+        allowOutsideClick: false,
+        didOpen: () => {
+          swal.showLoading();
+        },
+      });
+
+      store
+        .dispatch("createTicket", data.value)
+        .then(() => {
+          swal.fire({ title: "¡Ticket enviado!", icon: "success" });
+        })
+        .catch(() =>
+          swal.fire({ title: "Error en el sistema", icon: "error" })
+        );
     }
 
     return { tabChanger, sendForm, data };
   },
-  components:{
-      DataTableTickets,
+  components: {
+    DataTableTickets,
   },
 };
 </script>

@@ -42,3 +42,23 @@ class dominio_viewSet(viewsets.ModelViewSet):
             return dominio.objects.all()
         else:
             return dominio.objects.filter(cod_facturacion=cod_facturacion)
+
+    def destroy(self, request, *args, **kwargs):
+        instance = self.get_object()
+        instace2 = dominio.objects.get(pk=self.kwargs["pk"])
+        factura = get_object_or_404(facturacion.objects.filter(pk = instace2.cod_facturacion.pk))
+        nuevos_dom = factura.dominios_disponibles+1
+        nueva_factura = facturacion(
+            pk = factura.id,
+            valor_total = factura.valor_total,
+            dominios_disponibles  =  nuevos_dom,
+            fecha_facturacion = factura.fecha_facturacion,
+            fecha_cancelacion = factura.fecha_cancelacion,
+            esta_activo = factura.esta_activo,
+            cod_cliente = factura.cod_cliente,
+            cod_plan = factura.cod_plan
+
+        )
+        nueva_factura.save()
+        self.perform_destroy(instance)
+        return self.list(request)

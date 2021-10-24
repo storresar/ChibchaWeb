@@ -93,7 +93,7 @@
 
 <script>
 /* eslint-disable no-unused-vars */
-import { reactive } from "vue";
+import { computed } from "vue";
 import { useStore } from "vuex";
 import { openModal } from "jenesius-vue-modal";
 import ModalDetalles from "../../components/Cliente/ModalDetalles.vue";
@@ -102,16 +102,16 @@ export default {
   async setup() {
     const store = useStore();
 
-    let tickets = store.getters.getTickets;
+    let tickets = computed(() => store.getters.getTickets);
     const user = store.getters.getUser;
 
     await store.dispatch("getTicketsList");
     
-    tickets = store.getters.getTickets;
+    tickets = computed(() => store.getters.getTickets);
 
-    let tickets_filter = await tickets.filter( 
-      element => element.cod_cliente == user.id
-    )
+    let tickets_filter = computed(() => 
+    tickets.value.filter( element => element.cod_cliente == user.id)
+    );
     
     const seeDetails = (tickets_filter) => {
         openModal(ModalDetalles, {tickets_filter})

@@ -13,4 +13,4 @@ class ticket(models.Model):
     desc_solucion = models.CharField(max_length=350)
     nivel = models.PositiveSmallIntegerField(default=1)
     solucionado = models.BooleanField(default=False)
-
+    is_respondido = models.BooleanField(default=False)
