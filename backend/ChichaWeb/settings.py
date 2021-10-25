@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-luq&+z$lyh5)zbv)=&*ywoa-ybj$qjzxz$p)2gr9$b*#%eyv^y'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['0.0.0.0', 'rocky-basin-43749.herokuapp.com', '127.0.0.1', 'localhost']
 
@@ -114,7 +114,7 @@ DATABASES = {
     }
 }
 
-# DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
 
 # Password validation
