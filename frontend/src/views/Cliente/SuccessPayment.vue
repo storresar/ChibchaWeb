@@ -1,8 +1,16 @@
 <template>
-    <div class="bg-brown-400 w-64 h-32">
-        <p class="text-white text-xl">
-            Felicidades el pago ha sido completado exitosamente
-        </p>
+    <div class="max-w-md md:h-96 py-4 px-8 bg-white shadow-lg rounded-lg my-20 m-auto">
+        <div class="flex justify-center md:justify-end -mt-16">
+            <img class="w-24 h-24 object-cover rounded-full border-none border-indigo-500" :src="`${publicPath}chibchaoro.png`">
+        </div>
+        <div>
+            <h2 class="text-gray-800 text-3xl font-semibold">Felicidades</h2>
+            <p class="mt-2 text-gray-600">Usted se ha suscrito exitosamente a nuestros servicios</p>
+        </div>
+        <img :src="`${publicPath}success.gif`" alt="" srcset="" class="my-4">
+        <div class="flex justify-end mt-4">
+            <p href="#" class="text-xl font-medium text-indigo-500">Equipo de ChichaWeb</p>
+        </div>
     </div>
 </template>
 
@@ -13,7 +21,7 @@ export default {
     setup() {
 
         const store = useStore()
-
+        const publicPath = process.env.BASE_URL
         var cliente, facturacion;
 
 
@@ -42,6 +50,7 @@ export default {
             })
         })
 
+        return {publicPath}
         
     },
 }
