@@ -34,7 +34,7 @@ class facturacion_viewset(viewsets.ModelViewSet):
         return Response(serializer.data)
 
     def create(self, request, *args, **kwargs):
-        request.data._mutable = True
+        if 'data._mutable' in request.data : request.data._mutable = True
         plan_escogido = get_object_or_404(plan.objects.filter(pk = request.data['cod_plan']))
         periodo =  plan_escogido.periodo_fact
         cliente_Escogido = get_object_or_404(cliente.objects.filter(pk = request.data['cod_cliente']))
@@ -75,7 +75,7 @@ class facturacion_viewset(viewsets.ModelViewSet):
                 nueva_auditoria.save()
             serializer.is_valid(raise_exception=True)
             self.perform_create(serializer)
-            request.data._mutable = False
+            if 'data._mutable' in request.data : request.data._mutable = True
             return Response(serializer.data)
         else:
             return Response(status=status.HTTP_406_NOT_ACCEPTABLE)

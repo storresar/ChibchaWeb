@@ -274,9 +274,9 @@ const store = createStore({
       var res = await fetch(`${apiBase}facturacion/`, {
         method: 'POST',
         headers: {
-          'Content-Type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW',
+          'Content-Type': 'application/json',
         },
-        body: parseToFormData(data)
+        body: JSON.stringify(data)
       })
       if (res.ok) {
         return 'Exito'

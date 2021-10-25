@@ -203,9 +203,13 @@ export default {
   data() {
     return {
       isMenuOpen: false,
-      isSuscribed: this.has_plan,
       publicPath: process.env.BASE_URL,
     };
+  },
+  computed: {
+    isSuscribed(){
+      return this.has_plan
+    }
   },
   methods: {
     ...mapMutations(['logoutUser']),

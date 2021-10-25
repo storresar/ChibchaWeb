@@ -16,14 +16,20 @@
 
 <script>
 import { useStore } from 'vuex'
+import { inject } from 'vue'
+import { useRouter } from 'vue-router'
 
 export default {
     setup() {
-
+        const swal = inject('$swal')
         const store = useStore()
         const publicPath = process.env.BASE_URL
+        const router = useRouter()
         var cliente, facturacion;
 
+       
+        router.push({path: '/client'})
+        location.reload
 
         store.dispatch('retrieveUser', window.localStorage.getItem('userId'))
         .then(() => {
@@ -36,14 +42,21 @@ export default {
                     dominios_disponibles: 0,
                     cod_cliente: cliente.id,
                     fecha_cancelacion: new Date(),
-                    cod_plan: localStorage.getItem('SuscriptionId')
+                    cod_plan: parseInt(localStorage.getItem('SuscriptionId'))
                 }
 
                 store.dispatch('suscribirse', facturacion)
-                .then(() => this.$swal('Exito!', 'Se ha suscrito exitosamente a nuestros servicios :3', 'success'))
+                .then(() => {
+                    swal('Exito!', 'Se ha suscrito exitosamente a nuestros servicios :3', 'success')
+                    .then(() => {
+                        router.push({path: '/client'})
+                        location.reload
+                    })
+                })
                 .catch((error) => {
                     console.error(error)
                 })
+                
             })
         })
 

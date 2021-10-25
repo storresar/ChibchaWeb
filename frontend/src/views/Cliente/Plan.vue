@@ -58,7 +58,6 @@ export default{
 		const datosPlan = computed(() => store.getters.getDatosPlan)
 		
 		const urlImagen = computed(() => {
-			console.log(datosPlan.value.cod_plan)
 			if (datosPlan.value.cod_plan == 1 || datosPlan.value.cod_plan == 2) return 'chibchaplata.png'
 			else if (datosPlan.value.cod_plan == 3 || datosPlan.value.cod_plan == 4) return 'chibchaoro.png'
 			else return 'chibchaplatino2.png'
