@@ -273,6 +273,9 @@ const store = createStore({
       console.log(data);
       var res = await fetch(`${apiBase}facturacion/`, {
         method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify(data)
       })
       if (res.ok) {
