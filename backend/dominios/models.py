@@ -14,4 +14,4 @@ class dominio(models.Model):
     nom_dominio = models.CharField(max_length = 50)
     link_dominio = models.CharField(max_length = 50)
     cod_facturacion = models.ForeignKey(facturacion,on_delete=models.DO_NOTHING)
-    cod_distribuidor = models.ForeignKey(distribuidor,on_delete=models.DO_NOTHING,null=True)
+    cod_distribuidor = models.CharField(max_length = 50)

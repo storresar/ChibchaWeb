@@ -97,11 +97,15 @@
     const swal = inject('$swal')
     await store.dispatch("retrieveClient", store.getters.getUser.id)
     await store.dispatch("retrieveDatosPlan", store.getters.getClient.id)
+    const list_distributors = ['NameCheap', 'GoDaddy', 'HostGator', 'Neolo', 'Hostinger', 'Webcolombia']
+    console.log(Math.random() * (list_distributors.length - 0) + 0)
+    console.log(list_distributors[0])
     const selectDomain = (domain => {
       const dominio = {
           nom_dominio: domain.DomainNoExt,
           link_dominio: domain.DomainName,
-          cod_facturacion: store.getters.getDatosPlan.id
+          cod_facturacion: store.getters.getDatosPlan.id,
+          cod_distribuidor: list_distributors[parseInt(Math.random() * (list_distributors.length - 0) + 0)]
         }
       if(store.getters.getDatosPlan.esta_activo == true){
         console.log(domain.DomainName);

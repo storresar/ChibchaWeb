@@ -35,7 +35,7 @@
                                 <div class="text-sm text-gray-500">{{dominio.link_dominio}}</div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
-                                <div class="text-sm text-gray-500">{{dominio.cod_facturacion}}</div>
+                                <div class="text-sm text-gray-500">{{dominio.cod_distribuidor}}</div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                 <Popper placement="left">
