@@ -12,6 +12,7 @@ django-filter = "*"
 requests = "*"
 gunicorn = "*"
 django-heroku = "*"
+dj-database-url = "*"
 
 [dev-packages]
 
