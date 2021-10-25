@@ -99,8 +99,10 @@ export default {
           quantity: 1,
         },
       ],
-      successURL: "http://localhost:8080/client/success/",
-      cancelURL: "http://localhost:8080/",
+      successURL: process.env.NODE_ENV == 'development' ? 
+      "http://localhost:8080/client/success/" : 'https://chibcha-web.vercel.app/client/success',
+      cancelURL: process.env.NODE_ENV == 'development' ? 
+      "http://localhost:8080/" : 'https://chibcha-web.vercel.app/',
     };
   },
   computed: {
