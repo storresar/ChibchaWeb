@@ -36,7 +36,7 @@
         Inicia sesion
       </button>
      <div class=" flex flex-col-reverse" >
-          <a class="inline-block align-baseline font-bold text-sm text-white hover:text-red-50 transition-colors duration-200" href="#">
+          <a v-if="false" class="inline-block align-baseline font-bold text-sm text-white hover:text-red-50 transition-colors duration-200" href="#">
         Olvide mi clave
       </a>
       <a class="inline-block align-baseline font-bold text-sm text-white hover:text-red-50 transition-colors duration-200" @click="registro">
