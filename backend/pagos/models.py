@@ -4,7 +4,7 @@ from usuarios.models import cliente
 # Create your models here.
 class plan(models.Model):
     nom_plan = models.CharField(max_length = 50)
-    valor_plan = models.PositiveSmallIntegerField(default=0)
+    valor_plan = models.IntegerField(default=0)
     periodo_fact = models.CharField(max_length=10)
     cant_dominios = models.PositiveSmallIntegerField(default=0)
     cant_correos = models.PositiveSmallIntegerField(default=0)

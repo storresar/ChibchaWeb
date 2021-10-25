@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-luq&+z$lyh5)zbv)=&*ywoa-ybj$qjzxz$p)2gr9$b*#%eyv^y
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0', 'rocky-basin-43749.herokuapp.com']
+ALLOWED_HOSTS = ['0.0.0.0', 'rocky-basin-43749.herokuapp.com', '127.0.0.1']
 
 AUTH_USER_MODEL = 'usuarios.usuario'
 
@@ -97,7 +97,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'ChichaWeb.wsgi.application'
 
 CORS_ALLOWED_ORIGINS  = [
-    "http://localhost:3000",
+    "http://localhost:8080",
     "https://chibcha-web.vercel.app",
 ]
 
