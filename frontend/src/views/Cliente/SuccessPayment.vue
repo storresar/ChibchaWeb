@@ -31,9 +31,6 @@ export default {
             .then(() => {
                 cliente = store.getters.getClient;
 
-                console.log(store.getters.getClient);
-
-
                 facturacion = {
                     valor_total: 0,
                     dominios_disponibles: 0,

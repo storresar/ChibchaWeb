@@ -29,7 +29,7 @@
             <nav>
               <ul class="space-y-4">
                 <li class="text-white">GENERAL</li>
-                <li>
+                <li v-if="isSuscribed">
                   <router-link to="/client/plan" class="ml-2 font-medium tracking-wide text-white transition-colors duration-200 hover:text-red-50 flex gap-2">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
@@ -37,7 +37,7 @@
                     <p>Mi plan</p>
                   </router-link>
                 </li>
-                <li>
+                <li v-if="isSuscribed">
                   <router-link @click="isMenuOpen = false" to="/client/search" class="ml-2 font-medium tracking-wide text-white transition-colors duration-200 hover:text-red-50 flex gap-2">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 21h7a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v11m0 5l4.879-4.879m0 0a3 3 0 104.243-4.242 3 3 0 00-4.243 4.242z" />
@@ -62,7 +62,7 @@
                     <p>Ver perfil</p>
                   </router-link>
                 </li>
-                <li>
+                <li v-if="isSuscribed">
                   <router-link @click="isMenuOpen = false" to="/client/myDomains" class="ml-2 font-medium tracking-wide text-white transition-colors duration-200 hover:text-red-50 flex gap-2">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
@@ -104,7 +104,7 @@
       </div>
       <ul class="hidden md:flex md:flex-col gap-4 mt-4">
         <li class="text-white">GENERAL</li>
-        <li>
+        <li v-if="isSuscribed">
           <router-link to="/client/plan" class="ml-2 font-medium tracking-wide text-white transition-colors duration-200 hover:text-red-50 flex gap-2">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
@@ -112,7 +112,7 @@
             <p>Mi plan</p>
           </router-link>
         </li>
-        <li>
+        <li v-if="isSuscribed">
           <router-link @click="isMenuOpen = false" to="/client/search" class="ml-2 font-medium tracking-wide text-white transition-colors duration-200 hover:text-red-50 flex gap-2">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 21h7a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v11m0 5l4.879-4.879m0 0a3 3 0 104.243-4.242 3 3 0 00-4.243 4.242z" />
@@ -137,7 +137,7 @@
             <p>Ver perfil</p>
           </router-link>
         </li>
-        <li>
+        <li v-if="isSuscribed">
           <router-link @click="isMenuOpen = false" to="/client/myDomains" class="ml-2 font-medium tracking-wide text-white transition-colors duration-200 hover:text-red-50 flex gap-2">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
@@ -197,9 +197,13 @@ import { mapMutations } from 'vuex';
 import { ModalInicio } from '../Presentacion/ModalInicio.vue'
 
 export default {
+  props: {
+    has_plan: Boolean,
+  },
   data() {
     return {
       isMenuOpen: false,
+      isSuscribed: this.has_plan,
       publicPath: process.env.BASE_URL,
     };
   },
@@ -213,7 +217,7 @@ export default {
       this.logoutUser()
       this.$router.push("/")
       this.$router.go(0)
-    }
+    },
   }
 };
 </script>
